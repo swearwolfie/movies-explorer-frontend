@@ -1,0 +1,39 @@
+.navtab {
+  position: absolute;
+  bottom: 30px;
+}
+
+.navtab__section {
+  display: flex;
+  flex-direction: row;
+  margin: 0px 40px;
+  padding: 0px;
+}
+
+.navtab__list {
+  list-style-type: none;
+  width: 96px;
+  height: 36px;
+  background-color: #303030;
+  border-radius: 10px;
+  margin: 0px 10px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navtab__list:last-of-type {
+  margin: 0px;
+}
+
+.navtab__link{
+  color: #FFF;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 16px;
+  margin: 0px;
+  padding: 0px;
+  cursor: pointer;
+  text-decoration: none;
+}
