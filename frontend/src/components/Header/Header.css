@@ -31,18 +31,61 @@
 .header__container {
   display: flex;
   flex-direction: row;
+  margin-left: 50px;
 }
-.header__link {
-  margin: 29px 50px 29px 0px;
+
+.header__account {
+  margin: 21px 0px 0px;
+  display: flex;
+  flex-direction: row;
+  width: 100px;
+  height: 32px;
+  border-radius: 50px;
+  border: 2px solid rgba(170, 170, 170, 0.2);
+  align-items: center;
+}
+
+.header__account-link {
+  margin: 0px 12px 0px 7px;
   padding: 0px;
   color: #FFF;
   text-align: right;
-  font-size: 12px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 16px;
   text-decoration: none;
   cursor: pointer;
+}
+
+.header__account-icon {
+  background-image: url(../../images/icon__COLOR_icon-main.svg);
+  width: 100px;
+  height: 32px;
+  background-repeat: no-repeat;
+  margin: 0px 0px 0px 12px;
+  background-position: center;
+}
+
+.header__link {
+  margin: 29px 50px 29px 0px;
+  padding: 0px;
+  color: #FFF;
+  text-align: right;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 17px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.header__link_movies {
+  margin: 29px 0px 0px;
+}
+
+.header__link_movies:last-of-type {
+  margin-left: 16px;
 }
 
 .header__button {
