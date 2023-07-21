@@ -1,7 +1,7 @@
 .filter {
   display: flex;
   flex-direction: row;
-  margin: 33px 0px 0px;
+  margin: 33px 0px 47px;
 }
 
 .filter__title {

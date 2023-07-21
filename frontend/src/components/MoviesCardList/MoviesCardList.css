@@ -1,0 +1,15 @@
+.movies-cards-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.movies-list {
+  margin: 70px 70px 0px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+  column-gap: 20px;
+  row-gap: 32px;
+  list-style-type: none;
+  padding: 0px;
+}
