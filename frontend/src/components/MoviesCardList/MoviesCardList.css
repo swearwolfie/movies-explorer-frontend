@@ -1,9 +1,9 @@
-.movies-cards-section {
+.movies__cards-section {
   display: flex;
   flex-direction: column;
 }
 
-.movies-list {
+.movies__list {
   margin: 70px 70px 0px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);

@@ -21,27 +21,30 @@ function Header({ onSignOut }) {
           }
         />
 
-        <Route
-          path="/movies"
-          element={
-            <>
-            <div className="header__container">
-              <Link to="/movies" className="header__link header__link_movies">
-                Фильмы
-              </Link>
-              <Link to="/saved-movies" className="header__link header__link_movies">
-                Сохраненные фильмы
-              </Link>
-            </div>
-            <div className="header__account">
-              <div className="header__account-icon"></div>
-            <Link to="/profile" className="header__account-link">
-                Аккаунт
-              </Link>
-            </div>
-            </>
-          }
-        />
+        {[ "/movies", "/saved-movies", "/profile" ].map((path, index) => 
+                <Route
+                path={path}
+                key={index}
+                element={
+                  <>
+                  <div className="header__container">
+                    <Link to="/movies" className="header__link header__link_movies">
+                      Фильмы
+                    </Link>
+                    <Link to="/saved-movies" className="header__link header__link_movies">
+                      Сохраненные фильмы
+                    </Link>
+                  </div>
+                  <div className="header__account">
+                    <div className="header__account-icon"></div>
+                  <Link to="/profile" className="header__account-link">
+                      Аккаунт
+                    </Link>
+                  </div>
+                  </>
+                }
+              />
+        )}
       </Routes>
     </header>
   );

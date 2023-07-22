@@ -1,4 +1,4 @@
-.movies-list-item {
+.movies__list-item {
   display: flex;
   flex-direction: column;
   background-color: #222222;
@@ -6,12 +6,12 @@
   border-radius: 10px;
 }
 
-.movie-poster {
+.movie__poster {
   width: 270px;
   height: 151px;
 }
 
-.movie-container {
+.movie__container {
   display: flex;
   flex-direction: row;
   margin: 0px 12px;
@@ -19,7 +19,7 @@
   padding: 0px;
 }
 
-.movie-title {
+.movie__title {
   color: #FFF;
   font-size: 13px;
   font-style: normal;
@@ -29,7 +29,7 @@
   padding: 0px;
 }
 
-.movie-like {
+.movie__like {
   width: 11px;
   height: 11px;
   background-color: #222222;
@@ -39,36 +39,16 @@
   margin: 14px 0px 0px;
 }
 
-.movie-like_active {
+.movie__like_active {
   background-color: #3DDC84;
 }
 
-.movie-duration {
+.movie__duration {
   margin: 14px 0px 10px 12px;
   padding: 0px;
   color: #8B8B8B;
   font-size: 11px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
-}
-
-.movies-button {
-  margin: 80px 0px;
-  padding: 0px;
-  width: 320px;
-  height: 36px;
-  border-radius: 10px;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-position: center;
-  align-self: center;
-  border: 1px solid #424242;
-  cursor: pointer;
-  color: #FFF;
-  text-align: center;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 500;
   line-height: normal;
 }

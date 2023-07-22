@@ -6,8 +6,10 @@ import Footer from "../Footer/Footer";
 import Main from "../Main/Main";
 import Register from "../Register/Register";
 import Movies from "../Movies/Movies";
+import SavedMovies from "../SavedMovies/SavedMovies";
+import Profile from "../Profile/Profile";
 // import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
@@ -19,24 +21,46 @@ function App() {
       </CurrentUserContext.Provider> */}
       <Header />
       <Routes>
-          <Route path="/" element={
+        <Route
+          path="/"
+          element={
             <>
-            <Main />
-            <Footer />
+              <Main />
+              <Footer />
             </>
-          } />
-
-            <Route path="/movies" element={
-            <>
-            <Movies />
-            <Footer />
-            </>
-          } />
-
-          <Route path="/singup" element={
-            <Register />
           }
-          />
+        />
+
+        <Route
+          path="/movies"
+          element={
+            <>
+              <Movies />
+              <Footer />
+            </>
+          }
+        />
+
+        <Route
+          path="/saved-movies"
+          element={
+            <>
+              <SavedMovies />
+              <Footer />
+            </>
+          }
+        />
+
+        <Route
+          path="/profile"
+          element={
+            <>
+              <Profile />
+            </>
+          }
+        />
+
+        <Route path="/singup" element={<Register />} />
       </Routes>
     </>
   );

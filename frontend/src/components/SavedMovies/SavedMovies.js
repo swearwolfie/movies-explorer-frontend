@@ -1,5 +1,5 @@
 import React from 'react';
-import './Movies.css';
+import './SavedMovies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import MoviePic from '../../images/pic__COLOR_pic.svg';
@@ -22,58 +22,22 @@ const movies = [
   {
     id: 3,
     title: '33 слова о дизайне',
-    image: MoviePic,
-    duration: '1ч42м'
-  },
-  {
-    id: 4,
-    title: '33 слова о дизайне',
-    image: MoviePic,
-    duration: '1ч42м'
-  },
-  {
-    id: 5,
-    title: '33 слова о дизайне',
     image: MoviePic2,
-    duration: '1ч42м'
-  },
-  {
-    id: 6,
-    title: '33 слова о дизайне',
-    image: MoviePic,
-    duration: '1ч42м'
-  },
-  {
-    id: 7,
-    title: '33 слова о дизайне',
-    image: MoviePic,
-    duration: '1ч42м'
-  },
-  {
-    id: 8,
-    title: '33 слова о дизайне',
-    image: MoviePic,
-    duration: '1ч42м'
-  },
-  {
-    id: 9,
-    title: '33 слова о дизайне',
-    image: MoviePic,
     duration: '1ч42м'
   }
 ]
 
-function Movies({ onMore }) {
+function SavedMovies({ onMore }) {
   return (
     <>
     <SearchForm />
     {/* <Preloader /> */}
     <MoviesCardList movies={movies} />
     <div className="movies-button-container">
-    <button className="movies-button" onClick={onMore}>Еще</button> 
+    <button className="movies-button movies-button_hidden" onClick={onMore}>Еще</button> 
     </div>
     </>
   )
 }
 
-export default Movies;
+export default SavedMovies;

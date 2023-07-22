@@ -4,13 +4,12 @@ import MoviesCard from '../MoviesCard/MoviesCard';
 
 function MoviesCardList({ onMore, movies }) {
   return (
-    <section className='movies-cards-section'>
-    <ul className='movies-list'>
+    <section className='movies__cards-section'>
+    <ul className='movies__list'>
     {movies.map((movie) => (
       <MoviesCard movie={movie} />
       ))} 
     </ul> 
-     <button className="movies-button" onClick={onMore}>Еще</button> 
      </section>
   );
 }
