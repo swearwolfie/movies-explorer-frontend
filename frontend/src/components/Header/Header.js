@@ -1,23 +1,26 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import "./Header.css";
+import Logo from "../Logo/Logo";
 
-function Header({ onSignOut }) {
+function Header() {
   return (
     <header className="header">
-      <div className="header__logo"></div>
       <Routes>
         <Route
           path="/"
           element={
+            <>
+            <Logo />
             <div className="header__container">
               <Link to="/signup" className="header__link">
                 Регистрация
               </Link>
-              <button className="header__button" onClick={onSignOut}>
+              <Link to="/signin" className="header__signin">
                 Войти
-              </button>
+              </Link>
             </div>
+            </>
           }
         />
 
@@ -27,6 +30,7 @@ function Header({ onSignOut }) {
                 key={index}
                 element={
                   <>
+                  <Logo />
                   <div className="header__container">
                     <Link to="/movies" className="header__link header__link_movies">
                       Фильмы

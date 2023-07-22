@@ -10,6 +10,7 @@ import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 // import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Routes, Route } from "react-router-dom";
+import Login from "../Login/Login";
 
 function App() {
   return (
@@ -60,7 +61,19 @@ function App() {
           }
         />
 
-        <Route path="/singup" element={<Register />} />
+         <Route
+          path="/signin"
+          element={
+              <Login />
+          }
+        />
+
+        <Route 
+        path="/singup" 
+        element={
+        <Register />
+        } 
+        />
       </Routes>
     </>
   );

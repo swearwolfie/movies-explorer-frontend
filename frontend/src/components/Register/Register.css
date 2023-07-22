@@ -1,0 +1,17 @@
+.register {
+  display: flex;
+  flex-direction: column;
+  margin: 70px 0px 0px;
+  width: 396px;
+  align-self: center;
+}
+
+.register__greeting {
+  margin: 40px 0px 0px;
+  padding: 0px;
+  color: #FFF;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}

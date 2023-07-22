@@ -11,3 +11,8 @@
   -moz-text-size-adjust: 100%;
   text-rendering: optimizeLegibility;  
 }
+
+.page__root {
+  display: flex;
+  flex-direction: column;
+}
