@@ -48,4 +48,9 @@
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
+  transition: transform 0.3s
+}
+
+.portfolio__link:hover {
+  transform: scale(1.4);
 }

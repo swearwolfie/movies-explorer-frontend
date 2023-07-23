@@ -69,8 +69,8 @@ function Movies({ onMore }) {
     <SearchForm />
     {/* <Preloader /> */}
     <MoviesCardList movies={movies} />
-    <div className="movies-button-container">
-    <button className="movies-button" onClick={onMore}>Еще</button> 
+    <div className="movies-button__container">
+    <button className="movies__button" onClick={onMore}>Еще</button> 
     </div>
     </>
   )

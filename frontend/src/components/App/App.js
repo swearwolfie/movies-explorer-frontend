@@ -11,6 +11,7 @@ import Profile from "../Profile/Profile";
 // import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Routes, Route } from "react-router-dom";
 import Login from "../Login/Login";
+import NotFound from "../NotFound/NotFound";
 
 function App() {
   return (
@@ -68,12 +69,14 @@ function App() {
           }
         />
 
-        <Route 
-        path="/singup" 
-        element={
-        <Register />
-        } 
+        <Route
+          path="/signup"
+          element={
+              <Register />
+          }
         />
+
+      <Route path="/*" element={<NotFound />} />
       </Routes>
     </>
   );

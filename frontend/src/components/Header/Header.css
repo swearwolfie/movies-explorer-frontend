@@ -46,6 +46,11 @@
   line-height: 16px;
   text-decoration: none;
   cursor: pointer;
+  transition: transform 0.4s ease-in-out;
+}
+
+.header__account:hover {
+  transform: scale(1.03);
 }
 
 .header__account-icon {
@@ -68,6 +73,11 @@
   line-height: 17px;
   text-decoration: none;
   cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.header__link:hover {
+  opacity: 0.6;
 }
 
 .header__link_movies {
@@ -96,4 +106,9 @@
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
+  transition: transform 0.3s
+}
+
+.header__signin:hover {
+  transform: scale(0.95);
 }

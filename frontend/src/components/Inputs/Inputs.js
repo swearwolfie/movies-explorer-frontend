@@ -7,7 +7,7 @@ function Inputs() {
       <h3 className="inputs__minititle">Email</h3>
       <input
         className="inputs__input"
-        id="inputs-email-input"
+        id='inputs-email-input'
         name="inputs-email"
         placeholder="pochta@yandex.ru"
         // onChange={handleEmailInfo}

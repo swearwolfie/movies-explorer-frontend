@@ -33,8 +33,8 @@ function SavedMovies({ onMore }) {
     <SearchForm />
     {/* <Preloader /> */}
     <MoviesCardList movies={movies} />
-    <div className="movies-button-container">
-    <button className="movies-button movies-button_hidden" onClick={onMore}>Еще</button> 
+    <div className="movies-button__container">
+    <button className="movies__button movies__button_hidden" onClick={onMore}>Еще</button> 
     </div>
     </>
   )

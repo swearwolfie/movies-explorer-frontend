@@ -36,4 +36,9 @@
   padding: 0px;
   cursor: pointer;
   text-decoration: none;
+  transition: opacity 0.3s;
+}
+
+.navtab__link:hover {
+  opacity: 0.6;
 }

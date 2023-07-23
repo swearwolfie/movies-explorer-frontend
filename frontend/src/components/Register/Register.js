@@ -2,6 +2,7 @@ import React from 'react';
 import './Register.css';
 import Logo from '../Logo/Logo';
 import Inputs from '../Inputs/Inputs';
+import { Link } from 'react-router-dom';
 // import { useState } from 'react';
 
 function Register({ handleSubmit }) {  //  { onSignIn }
@@ -37,9 +38,9 @@ function Register({ handleSubmit }) {  //  { onSignIn }
       <Logo />
       <h2 className='register__greeting'>Добро пожаловать!</h2>
       <form className='register__form' onSubmit={handleSubmit} name="register-form">
-      <h3 className='register__name'>Имя</h3>
+      <h3 className='inputs__minititle'>Имя</h3>
       <input
-          className="register__input"
+          className="inputs__input"
           id="register-name-input"
           name="register-name"
           placeholder="Виталий"
@@ -55,6 +56,12 @@ function Register({ handleSubmit }) {  //  { onSignIn }
         Зарегистрироваться
         </button>
       </form>
+      <div className="register__container">
+        <p className="register__text">Уже зарегистрированы?</p>
+        <Link to="/signin" className="register__link">
+            Войти
+          </Link>
+      </div>
     </section>
   )
 }

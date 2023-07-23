@@ -60,10 +60,15 @@
   line-height: normal;
   background-color: transparent;
   border: 2px solid transparent;
+  transition: opacity 0.3s
 }
 
 .profile__button:last-of-type {
   margin-top: 16px;
   color: #EE3465;
   font-weight: 500px;
+}
+
+.profile__button:hover {
+  opacity: 0.7;
 }

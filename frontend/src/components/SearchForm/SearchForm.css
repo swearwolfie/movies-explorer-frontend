@@ -49,4 +49,9 @@
   font-style: normal;
   font-weight: 500;
   line-height: 18px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.search-form__button:hover {
+  transform: scale(1.05);
 }
