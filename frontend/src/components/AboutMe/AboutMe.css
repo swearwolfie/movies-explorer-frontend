@@ -68,4 +68,51 @@
 .aboutme__column_info {
   max-width: 600px;
   width: 100%;
+  margin-right: 70px;
+}
+
+.aboutme__link {
+  margin: 0px;
+  padding: 0px;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 16px;
+  font-weight: 400;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+@media screen and (max-width: 768px) {
+  .aboutme {
+    margin: 0px 50px;
+  }
+  .aboutme__title {
+    margin-top: 93px;
+  }
+
+  .aboutme__name {
+    font-size: 40px;
+    margin-bottom: 16px;
+  }
+
+  .aboutme__job {
+    font-size: 12px;
+  }
+
+  .aboutme__info {
+    font-size: 12px;
+    margin: 20px 0px 40px;
+  }
+
+  .aboutme__avatar {
+    width: 255px;
+    height: 307px;
+  }
+
+  .aboutme__column_info {
+    margin-right: 45px;
+    line-height: 18px;
+}
 }

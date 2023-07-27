@@ -47,6 +47,15 @@
   max-width: 460px;
 }
 
+.techs__names {
+  color: #FFF;
+  text-align: center;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
 .techs__section {
   display: flex;
   flex-direction: row;
@@ -71,4 +80,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.techs__list:last-of-type {
+  margin: 0px;
+}
+
+@media screen and (max-width: 768px) {
+  .techs__title {
+    margin: 90px 60px 23px 50px;
+  } 
+  .techs__btm {
+    margin: 0px 50px 70px;
+  } 
+  .techs__section {
+    margin: 0px 60px 90px;
+  }
+  .techs__names {
+    font-size: 12px;
+  }
+  .techs__list {
+    width: 84px;
+    height: 57px;
+  }
+
+  .techs__info {
+    font-size: 12px;
+  }
 }

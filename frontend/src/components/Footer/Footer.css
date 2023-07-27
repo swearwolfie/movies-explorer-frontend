@@ -38,19 +38,6 @@
   color: #fff;
 }
 
-/* @media screen and (max-width: 920px) {
-  .footer__copyright {
-    margin-left: 19px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .footer__copyright {
-    font-size: 14px;
-    line-height: 17px;
-  }
-} */
-
 .footer__links-container {
   padding: 0px;
   margin-top: 20px;
@@ -76,4 +63,10 @@
 
 .footer__link:first-of-type {
   margin-right: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .footer {
+    margin: 0px 50px;
+  }
 }
