@@ -30,44 +30,6 @@
   margin-left: 50px;
 }
 
-.header__account {
-  margin: 21px 0px 0px;
-  display: flex;
-  flex-direction: row;
-  width: 100px;
-  height: 32px;
-  border-radius: 50px;
-  border: 2px solid rgba(170, 170, 170, 0.2);
-  align-items: center;
-}
-
-.header__account-link {
-  margin: 0px 12px 0px 7px;
-  padding: 0px;
-  color: #FFF;
-  text-align: right;
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 16px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: transform 0.4s ease-in-out;
-}
-
-.header__account:hover {
-  transform: scale(1.03);
-}
-
-.header__account-icon {
-  background-image: url(../../images/icon__COLOR_icon-main.svg);
-  width: 100px;
-  height: 32px;
-  background-repeat: no-repeat;
-  margin: 0px 0px 0px 12px;
-  background-position: center;
-}
-
 .header__link {
   margin: 29px 50px 29px 0px;
   padding: 0px;
@@ -117,4 +79,53 @@
 
 .header__signin:hover {
   transform: scale(0.95);
+}
+
+.header__burger-button {
+  display: none;
+  width: 30px;
+  height: 2px;
+  background-color: #fff;
+  position: relative;
+  border: none;
+  margin: 25px 0px 15px;
+  cursor: pointer;
+}
+
+.header__burger-button::before,
+.header__burger-button::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 2px;
+  background-color: #fff;
+}
+
+.header__burger-button::before {
+  top: -10px;
+}
+
+.header__burger-button::after {
+  top: 10px;
+}
+
+@media screen and (max-width: 768px) {
+  .header__link_movies {
+    display: none;
+  }
+
+  .header__account {
+    display: none;
+  }
+
+  .header__burger-button {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .header__burger-button:hover {
+    transform: scale(1.05);
+  }
 }

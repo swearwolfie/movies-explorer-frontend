@@ -2,8 +2,9 @@ import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import "./Header.css";
 import Logo from "../Logo/Logo";
+import Account from "../Account/Account";
 
-function Header() {
+function Header({ onBurger }) {
   return (
     <header className="header">
       <Routes>
@@ -39,12 +40,8 @@ function Header() {
                       Сохраненные фильмы
                     </Link>
                   </div>
-                  <div className="header__account">
-                    <div className="header__account-icon"></div>
-                  <Link to="/profile" className="header__account-link">
-                      Аккаунт
-                    </Link>
-                  </div>
+                  <Account />
+                  <button className="header__burger-button" onClick={onBurger}></button> 
                   </>
                 }
               />

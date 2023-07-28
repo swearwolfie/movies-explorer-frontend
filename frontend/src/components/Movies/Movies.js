@@ -4,6 +4,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import MoviePic from '../../images/pic__COLOR_pic.svg';
 import MoviePic2 from '../../images//pic__COLOR_pic2.svg';
+import Hamburger from '../Hamburger/Hamburger';
 // import Preloader from '../Preloader/Preloader';
 
 const movies = [
@@ -66,6 +67,7 @@ const movies = [
 function Movies({ onMore }) {
   return (
     <>
+    <Hamburger />
     <SearchForm />
     {/* <Preloader /> */}
     <MoviesCardList movies={movies} />

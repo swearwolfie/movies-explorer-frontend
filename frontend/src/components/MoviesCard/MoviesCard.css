@@ -6,10 +6,10 @@
   border-radius: 10px;
 }
 
-.movie__poster {
+/* .movie__poster {
   width: 270px;
   height: 151px;
-}
+} */
 
 .movie__container {
   display: flex;
