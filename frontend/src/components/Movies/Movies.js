@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Movies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
@@ -64,11 +64,13 @@ const movies = [
   }
 ]
 
-function Movies({ onMore }) {
+function Movies({ onMore, BurgerOpen, CloseBurgerMenu, MoviesActive }) {
+
   return (
     <>
-    <Hamburger />
+    {}
     <SearchForm />
+    {BurgerOpen ? <Hamburger onClose={CloseBurgerMenu} MenuVersion={BurgerOpen} MoviesActive={MoviesActive} /> : ''}
     {/* <Preloader /> */}
     <MoviesCardList movies={movies} />
     <div className="movies-button__container">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../index.css";
 import "./App.css";
 import Header from "../Header/Header";
@@ -14,6 +14,17 @@ import Login from "../Login/Login";
 import NotFound from "../NotFound/NotFound";
 
 function App() {
+  const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
+
+  function handleBurgerOpen() {
+    setIsBurgerMenuOpen(true);
+  }
+
+  function handleCloseBurgerMenu() {
+    setIsBurgerMenuOpen(false);
+  }
+
+
   return (
     <>
       {/* <CurrentUserContext.Provider>
@@ -21,7 +32,7 @@ function App() {
       <Main />
       <Footer />
       </CurrentUserContext.Provider> */}
-      <Header />
+      <Header onBurger={handleBurgerOpen} />
       <Routes>
         <Route
           path="/"
@@ -37,7 +48,7 @@ function App() {
           path="/movies"
           element={
             <>
-              <Movies />
+              <Movies BurgerOpen={isBurgerMenuOpen} CloseBurgerMenu={handleCloseBurgerMenu} MoviesActive={isBurgerMenuOpen} />
               <Footer />
             </>
           }
@@ -47,7 +58,7 @@ function App() {
           path="/saved-movies"
           element={
             <>
-              <SavedMovies />
+              <SavedMovies BurgerOpen={isBurgerMenuOpen} CloseBurgerMenu={handleCloseBurgerMenu} SavedMoviesActive={isBurgerMenuOpen} />
               <Footer />
             </>
           }

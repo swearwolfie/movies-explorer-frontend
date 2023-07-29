@@ -105,9 +105,18 @@
   top: -10px;
 }
 
+.header__burger-button::before:hover {
+  transform: scale(1.05);
+}
+
 .header__burger-button::after {
   top: 10px;
 }
+
+.header__burger-button::before:hover {
+  transform: scale(1.05);
+}
+
 
 @media screen and (max-width: 768px) {
   .header__link_movies {

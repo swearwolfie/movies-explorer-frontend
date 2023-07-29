@@ -2,6 +2,7 @@ import React from 'react';
 import './SavedMovies.css';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
+import Hamburger from '../Hamburger/Hamburger';
 import MoviePic from '../../images/pic__COLOR_pic.svg';
 import MoviePic2 from '../../images//pic__COLOR_pic2.svg';
 // import Preloader from '../Preloader/Preloader';
@@ -27,10 +28,11 @@ const movies = [
   }
 ]
 
-function SavedMovies({ onMore }) {
+function SavedMovies({ onMore, BurgerOpen, CloseBurgerMenu, SavedMoviesActive }) {
   return (
     <>
     <SearchForm />
+    {BurgerOpen ? <Hamburger onClose={CloseBurgerMenu} MenuVersion={BurgerOpen} SavedMoviesActive={SavedMoviesActive} /> : ''}
     {/* <Preloader /> */}
     <MoviesCardList movies={movies} />
     <div className="movies-button__container">

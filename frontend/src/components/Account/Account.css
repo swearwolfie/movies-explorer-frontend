@@ -9,6 +9,10 @@
   align-items: center;
 }
 
+.account_menu {
+  align-self: center;
+}
+
 .account__link {
   margin: 0px 12px 0px 7px;
   padding: 0px;
@@ -36,8 +40,8 @@
   background-position: center;
 }
 
-/* @media screen and (max-width: 768px) {
-  .account {
+@media screen and (max-width: 768px) {
+  .account_no-menu {
     display: none;
   }
-} */
+}
