@@ -108,3 +108,40 @@
     font-size: 12px;
   }
 }
+
+@media screen and (max-width: 670px) {
+  .techs__section {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(85px, 1fr));
+    gap: 10px;
+  }
+  .techs__list {
+    margin: 0px;
+  }
+  .techs__btm {
+    margin: 0px 18px 60px;
+  }
+  .techs__title {
+    margin: 70px 18px 28px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .techs__section {
+    grid-template-columns: repeat(2, minmax(85px, 1fr));
+    margin: 0px 0px 70px;
+  }
+
+  .techs__title {
+    font-size: 18px;
+  }
+
+  .techs__subtitle {
+    font-size: 30px;
+  }
+  .techs__info {
+    padding: 0px 40px;
+    font-size: 11px;
+    margin: 24px 0px 50px;
+  }
+}

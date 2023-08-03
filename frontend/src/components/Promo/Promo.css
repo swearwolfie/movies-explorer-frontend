@@ -36,3 +36,25 @@
     margin-top: 350px;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .promo {
+    height: 586px;
+    margin-top: 14px;
+  }
+  .promo__title {
+    margin-top: 220px;
+    font-size: 35px;
+    line-height: 40px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .promo {
+    margin: 14px 14px 0px;
+    padding: 0px;
+  }
+  .promo__title {
+    font-size: 29px;
+  }
+}

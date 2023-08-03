@@ -67,3 +67,38 @@
     font-size: 28px;
   }
 }
+
+@media screen and (max-width: 670px) {
+  .portfolio {
+    margin: 0px 24px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .portfolio__title {
+    margin: 70px 0px 20px;
+  }
+
+  .portfolio__description {
+    font-size: 24px;
+    line-height: 32px;
+  }
+
+  .portfolio__link {
+    width: 20px;
+    height: 40px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .portfolio__description {
+    font-size: 18px;
+    line-height: 28px;
+  }
+
+  .portfolio__link {
+    width: 18px;
+    height: 28px;
+    margin-top: 20px;
+  }
+}

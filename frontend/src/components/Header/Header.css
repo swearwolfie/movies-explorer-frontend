@@ -138,3 +138,28 @@
     transform: scale(1.05);
   }
 }
+
+@media screen and (max-width: 670px) {
+  .header {
+    margin: 0px 24px;
+  }
+
+  .header__link {
+    margin: 29px 14px 29px 0px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .header {
+    margin: 0px 14px;
+  }
+  .header__signin {
+    width: 54px;
+    height: 26px;
+    font-size: 10px;
+    margin: 24px 0px;
+  }
+  .header__link {
+    font-size: 10px;
+  }
+}

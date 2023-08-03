@@ -26,7 +26,7 @@
   margin: 0px;
 }
 
-.navtab__link{
+.navtab__link {
   color: #FFF;
   font-size: 12px;
   font-style: normal;
@@ -41,4 +41,23 @@
 
 .navtab__link:hover {
   opacity: 0.6;
+}
+
+@media screen and (max-width: 450px) {
+  .navtab {
+    bottom: 17px;
+  }
+  .navtab__section {
+    margin: 0px;
+  }
+  .navtab__list {
+    width: 82px;
+    height: 26px;
+    border-radius: 6px;
+    margin-right: 6px;
+  }
+
+  .navtab__link {
+    font-size: 10px;
+  }
 }
