@@ -76,3 +76,20 @@
     margin: 30px 0px 61px;
   }
 }
+
+@media screen and (max-width: 650px) {
+  .filter {
+    justify-content: center;
+    margin: 40px 0px 50px;
+  }
+  .filter__switch {
+    order: 2;
+  }
+  .filter__title {
+    margin: 0px 14px 0px 0px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+
+}

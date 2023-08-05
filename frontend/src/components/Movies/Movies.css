@@ -31,3 +31,13 @@
 .movies__button:hover {
   transform: scale(1.05);
 }
+
+@media screen and (max-width: 450px) {
+  .movies-button__container {
+    margin: 80px 0px;
+  }
+  .movies__button {
+    width: 240px;
+    height: 36px;
+  }
+}
