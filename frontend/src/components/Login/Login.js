@@ -47,8 +47,8 @@ function Login({ handleSubmit }) {
       <div className="login__container">
         <p className="login__text">Ещё не зарегистрированы?</p>
         <Link to="/signup" className="login__link">
-            Регистрация
-          </Link>
+          Регистрация
+        </Link>
       </div>
     </section>
   );

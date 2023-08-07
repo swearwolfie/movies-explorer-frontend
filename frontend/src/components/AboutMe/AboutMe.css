@@ -88,6 +88,7 @@
   .aboutme {
     margin: 0px 50px;
   }
+
   .aboutme__title {
     margin-top: 93px;
   }
@@ -114,17 +115,19 @@
   .aboutme__column_info {
     margin-right: 45px;
     line-height: 18px;
-}
+  }
 }
 
 @media screen and (max-width: 670px) {
   .aboutme {
     margin: 0px 25px;
   }
+
   .aboutme__avatar {
     width: 200px;
     height: 250px;
   }
+
   .aboutme__info {
     font-size: 11px;
   }
@@ -147,9 +150,11 @@
   .aboutme {
     margin: 0px 14px;
   }
+
   .aboutme__container {
     flex-direction: column-reverse;
   }
+
   .aboutme__avatar {
     max-width: 100vh;
     width: 100%;
@@ -157,6 +162,7 @@
     align-self: center;
     margin-top: 60px;
   }
+
   .aboutme__column {
     display: flex;
     flex-direction: column;
@@ -168,6 +174,7 @@
     width: 292px;
     height: 352px;
   }
+
   .aboutme__column_info {
     margin: 0px;
   }

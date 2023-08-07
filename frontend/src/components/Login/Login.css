@@ -2,7 +2,8 @@
   display: flex;
   flex-direction: column;
   margin: 70px 0px 0px;
-  width: 396px;
+  max-width: 396px;
+  width: 100%;
   align-self: center;
 }
 
@@ -110,4 +111,28 @@
 
 .login__link:hover {
   opacity: 0.8;
+}
+
+@media screen and (max-width: 460px) {
+  .login__greeting {
+    align-self: center;
+    margin: 50px 0px 80px;
+  }
+  .login__form {
+    margin: 0px 30px;
+  }
+  .login {
+    margin: 56px 0px 0px;
+    position: relative;
+  }
+  .login__submit {
+    font-size: 12px;
+    margin-top: 267px;
+  }
+  .login__link {
+    font-size: 12px;
+  }
+  .login__text {
+    font-size: 12px;
+  }
 }

@@ -12,3 +12,10 @@
 .header__logo:hover {
   transform: scale(1.2);
 }
+
+@media screen and (max-width: 450px) {
+  .header__logo_register {
+    align-self: center;
+    margin-top: 0px;
+  }
+}

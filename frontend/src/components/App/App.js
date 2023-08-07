@@ -24,7 +24,6 @@ function App() {
     setIsBurgerMenuOpen(false);
   }
 
-
   return (
     <>
       {/* <CurrentUserContext.Provider>
@@ -48,7 +47,11 @@ function App() {
           path="/movies"
           element={
             <>
-              <Movies BurgerOpen={isBurgerMenuOpen} CloseBurgerMenu={handleCloseBurgerMenu} MoviesActive={isBurgerMenuOpen} />
+              <Movies
+                BurgerOpen={isBurgerMenuOpen}
+                CloseBurgerMenu={handleCloseBurgerMenu}
+                MoviesActive={isBurgerMenuOpen}
+              />
               <Footer />
             </>
           }
@@ -58,7 +61,11 @@ function App() {
           path="/saved-movies"
           element={
             <>
-              <SavedMovies BurgerOpen={isBurgerMenuOpen} CloseBurgerMenu={handleCloseBurgerMenu} SavedMoviesActive={isBurgerMenuOpen} />
+              <SavedMovies
+                BurgerOpen={isBurgerMenuOpen}
+                CloseBurgerMenu={handleCloseBurgerMenu}
+                SavedMoviesActive={isBurgerMenuOpen}
+              />
               <Footer />
             </>
           }
@@ -68,26 +75,19 @@ function App() {
           path="/profile"
           element={
             <>
-              <Profile />
+              <Profile
+                BurgerOpen={isBurgerMenuOpen}
+                CloseBurgerMenu={handleCloseBurgerMenu}
+              />
             </>
           }
         />
 
-         <Route
-          path="/signin"
-          element={
-              <Login />
-          }
-        />
+        <Route path="/signin" element={<Login />} />
 
-        <Route
-          path="/signup"
-          element={
-              <Register />
-          }
-        />
+        <Route path="/signup" element={<Register />} />
 
-      <Route path="/*" element={<NotFound />} />
+        <Route path="/*" element={<NotFound />} />
       </Routes>
     </>
   );

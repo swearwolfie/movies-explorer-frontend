@@ -12,40 +12,49 @@ function Header({ onBurger }) {
           path="/"
           element={
             <>
-            <Logo />
-            <div className="header__container">
-              <Link to="/signup" className="header__link">
-                Регистрация
-              </Link>
-              <Link to="/signin" className="header__signin">
-                Войти
-              </Link>
-            </div>
+              <Logo />
+              <div className="header__container">
+                <Link to="/signup" className="header__link">
+                  Регистрация
+                </Link>
+                <Link to="/signin" className="header__signin">
+                  Войти
+                </Link>
+              </div>
             </>
           }
         />
 
-        {[ "/movies", "/saved-movies", "/profile" ].map((path, index) => 
-                <Route
-                path={path}
-                key={index}
-                element={
-                  <>
-                  <Logo />
-                  <div className="header__container">
-                    <Link to="/movies" className="header__link header__link_movies">
-                      Фильмы
-                    </Link>
-                    <Link to="/saved-movies" className="header__link header__link_movies">
-                      Сохраненные фильмы
-                    </Link>
-                  </div>
-                  <Account />
-                  <button className="header__burger-button" onClick={onBurger}></button> 
-                  </>
-                }
-              />
-        )}
+        {["/movies", "/saved-movies", "/profile"].map((path, index) => (
+          <Route
+            path={path}
+            key={index}
+            element={
+              <>
+                <Logo />
+                <div className="header__container">
+                  <Link
+                    to="/movies"
+                    className="header__link header__link_movies"
+                  >
+                    Фильмы
+                  </Link>
+                  <Link
+                    to="/saved-movies"
+                    className="header__link header__link_movies"
+                  >
+                    Сохраненные фильмы
+                  </Link>
+                </div>
+                <Account />
+                <button
+                  className="header__burger-button"
+                  onClick={onBurger}
+                ></button>
+              </>
+            }
+          />
+        ))}
       </Routes>
     </header>
   );
