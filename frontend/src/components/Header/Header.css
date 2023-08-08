@@ -11,19 +11,6 @@
   }
 }
 
-/* @media screen and (max-width: 950px) {
-  .header__logo {
-    margin-left: 27px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .header__logo {
-    width: 104px;
-    height: 25px;
-  }
-} */
-
 .header__container {
   display: flex;
   flex-direction: row;
@@ -46,14 +33,6 @@
 
 .header__link:hover {
   opacity: 0.6;
-}
-
-.header__link_movies {
-  margin: 29px 0px 0px;
-}
-
-.header__link_movies:last-of-type {
-  margin-left: 16px;
 }
 
 .header__signin {
@@ -79,64 +58,6 @@
 
 .header__signin:hover {
   transform: scale(0.95);
-}
-
-.header__burger-button {
-  display: none;
-  width: 30px;
-  height: 2px;
-  background-color: #fff;
-  position: relative;
-  border: none;
-  margin: 25px 0px 15px;
-  cursor: pointer;
-}
-
-.header__burger-button::before,
-.header__burger-button::after {
-  content: "";
-  position: absolute;
-  width: 30px;
-  height: 2px;
-  background-color: #fff;
-}
-
-.header__burger-button::before {
-  top: -10px;
-}
-
-.header__burger-button::before:hover {
-  transform: scale(1.05);
-}
-
-.header__burger-button::after {
-  top: 10px;
-}
-
-.header__burger-button::before:hover {
-  transform: scale(1.05);
-}
-
-
-@media screen and (max-width: 768px) {
-  .header__link_movies {
-    display: none;
-  }
-
-  .header__account {
-    display: none;
-  }
-
-  .header__burger-button {
-    display: flex;
-    align-self: center;
-    justify-content: center;
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .header__burger-button:hover {
-    transform: scale(1.05);
-  }
 }
 
 @media screen and (max-width: 670px) {

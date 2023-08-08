@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import "./Header.css";
 import Logo from "../Logo/Logo";
-import Account from "../Account/Account";
+import Navigation from "../Navigation/Navigation";
 
 function Header({ onBurger }) {
   return (
@@ -32,25 +32,7 @@ function Header({ onBurger }) {
             element={
               <>
                 <Logo />
-                <div className="header__container">
-                  <Link
-                    to="/movies"
-                    className="header__link header__link_movies"
-                  >
-                    Фильмы
-                  </Link>
-                  <Link
-                    to="/saved-movies"
-                    className="header__link header__link_movies"
-                  >
-                    Сохраненные фильмы
-                  </Link>
-                </div>
-                <Account />
-                <button
-                  className="header__burger-button"
-                  onClick={onBurger}
-                ></button>
+                <Navigation onNavBurger={onBurger} />
               </>
             }
           />

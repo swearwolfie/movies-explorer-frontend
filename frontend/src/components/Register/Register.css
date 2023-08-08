@@ -78,14 +78,14 @@
 
 @media screen and (max-width: 460px) {
   .register {
-    margin: 56px 0px 0px;
+    margin: 38px 0px 0px;
   }
   .register__greeting {
     align-self: center;
     margin: 50px 0px 80px;
   }
   .register {
-    margin: 50px 0px 0px;
+    margin: 38px 0px 0px;
   }
   .register__form {
     margin: 0px 30px;
@@ -101,3 +101,4 @@
     font-size: 12px;
   }
 }
+
