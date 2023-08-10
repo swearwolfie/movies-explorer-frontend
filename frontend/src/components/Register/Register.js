@@ -35,7 +35,7 @@ function Register({ handleSubmit }) {
   // }
 
   return (
-    <section className="register">
+    <main className="register">
       <Logo />
       <h2 className="register__greeting">Добро пожаловать!</h2>
       <form
@@ -67,7 +67,7 @@ function Register({ handleSubmit }) {
           Войти
         </Link>
       </div>
-    </section>
+    </main>
   );
 }
 

@@ -23,7 +23,8 @@
 }
 
 .inputs__input:focus {
-  outline: transparent;
+  outline: 1px solid #828282;
+  border-radius: 2px;
 }
 
 .inputs__input_invalid {

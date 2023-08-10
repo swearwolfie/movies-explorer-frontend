@@ -35,7 +35,7 @@ function SavedMovies({
   SavedMoviesActive,
 }) {
   return (
-    <>
+    <main className="saved-movies">
       <SearchForm />
       {BurgerOpen ? (
         <Hamburger
@@ -56,7 +56,7 @@ function SavedMovies({
           Еще
         </button>
       </div>
-    </>
+    </main>
   );
 }
 

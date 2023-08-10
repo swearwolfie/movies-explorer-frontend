@@ -49,11 +49,11 @@
   font-style: normal;
   font-weight: 500;
   line-height: 18px;
-  transition: transform 0.3s ease-in-out;
+  transition: opacity 0.3s;
 }
 
 .search-form__button:hover {
-  transform: scale(1.05);
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 768px) {

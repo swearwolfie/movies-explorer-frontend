@@ -24,11 +24,11 @@
   line-height: 16px;
   text-decoration: none;
   cursor: pointer;
-  transition: transform 0.4s ease-in-out;
+  transition: opacity 0.3s;
 }
 
 .account:hover {
-  transform: scale(1.03);
+  opacity: 0.6;
 }
 
 .account__icon {

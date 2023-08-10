@@ -71,11 +71,11 @@
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  transition: transform 0.3s ease-in-out;
+  transition: opacity 0.3s;
 }
 
 .login__submit:hover {
-  transform: scale(1.03);
+  opacity: 0.6;
 }
 
 .login__container {

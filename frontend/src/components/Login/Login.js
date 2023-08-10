@@ -35,7 +35,7 @@ function Login({ handleSubmit }) {
   // }
 
   return (
-    <section className="login">
+    <main className="login">
       <Logo />
       <h2 className="login__greeting">Рады видеть!</h2>
       <form className="login__form" onSubmit={handleSubmit} name="login-form">
@@ -50,7 +50,7 @@ function Login({ handleSubmit }) {
           Регистрация
         </Link>
       </div>
-    </section>
+    </main>
   );
 }
 

@@ -53,11 +53,11 @@
   flex-wrap: wrap;
   align-content: center;
   justify-content: center;
-  transition: transform 0.3s
+  transition: opacity 0.3s
 }
 
 .header__signin:hover {
-  transform: scale(0.95);
+  opacity: 0.6;
 }
 
 @media screen and (max-width: 670px) {

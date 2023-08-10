@@ -66,7 +66,7 @@ const movies = [
 
 function Movies({ onMore, BurgerOpen, CloseBurgerMenu, MoviesActive }) {
   return (
-    <>
+    <main className="movies">
       {}
       <SearchForm />
       {BurgerOpen ? (
@@ -85,7 +85,7 @@ function Movies({ onMore, BurgerOpen, CloseBurgerMenu, MoviesActive }) {
           Еще
         </button>
       </div>
-    </>
+    </main>
   );
 }
 
