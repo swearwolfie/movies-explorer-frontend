@@ -60,13 +60,13 @@ function Register({ handleSubmit }) {
         <button className="register__submit" type="submit" value="register">
           Зарегистрироваться
         </button>
-      </form>
-      <div className="register__container">
+        <div className="register__container">
         <p className="register__text">Уже зарегистрированы?</p>
         <Link to="/signin" className="register__link">
           Войти
         </Link>
       </div>
+      </form>
     </main>
   );
 }

@@ -29,17 +29,26 @@
   padding: 0px;
 }
 
-.movie__like {
+.movie__reaction {
+  margin: 14px 0px 0px;
+}
+
+.movie__reaction_like {
   width: 11px;
   height: 11px;
   background-color: #222222;
   border-radius: 50px;
   cursor: pointer;
   border: 2px solid #ffffff;
-  margin: 14px 0px 0px;
 }
 
-.movie__like_active {
+.movie__reaction_delete {
+  background-image: url(../../images/d8.svg);
+  width: 16px;
+  height: 16px;
+}
+
+.movie__reaction_like_active {
   background-color: #3DDC84;
 }
 

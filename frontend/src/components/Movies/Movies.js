@@ -79,7 +79,7 @@ function Movies({ onMore, BurgerOpen, CloseBurgerMenu, MoviesActive }) {
         ""
       )}
       {/* <Preloader /> */}
-      <MoviesCardList movies={movies} />
+      <MoviesCardList movies={movies} isSaved={false} />
       <div className="movies-button__container">
         <button className="movies__button" onClick={onMore}>
           Еще

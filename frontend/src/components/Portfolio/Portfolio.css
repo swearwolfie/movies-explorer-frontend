@@ -15,14 +15,15 @@
   line-height: 20px;
 }
 
-.portfolio__container {
+.portfolio__link {
   display: flex;
   flex-direction: row;
+  text-decoration: none;
   justify-content: space-between;
   border-bottom: 1px solid rgba(66, 66, 66, 1);
 }
 
-.portfolio__container:last-of-type {
+.portfolio__link:last-of-type {
   border-bottom: none;
   margin-bottom: 0px;
 }
@@ -38,7 +39,7 @@
   letter-spacing: -1.2px;
 }
 
-.portfolio__link {
+.portfolio__pointer {
   margin: 0px;
   padding: 0px;
   background-image: url(../../images/text__COLOR_font-main.svg);
@@ -51,7 +52,7 @@
   transition: opacity 0.3s;
 }
 
-.portfolio__link:hover {
+.portfolio__description:hover, .portfolio__pointer:hover {
   opacity: 0.6;
 }
 
@@ -84,7 +85,7 @@
     line-height: 32px;
   }
 
-  .portfolio__link {
+  .portfolio__pointer {
     width: 20px;
     height: 40px;
   }
@@ -96,9 +97,10 @@
     line-height: 28px;
   }
 
-  .portfolio__link {
+  .portfolio__pointer {
     width: 18px;
     height: 28px;
+    background-image: url(../../images/pointer.png);
     margin-top: 20px;
   }
 }

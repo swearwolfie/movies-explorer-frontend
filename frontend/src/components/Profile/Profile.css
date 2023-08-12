@@ -1,4 +1,5 @@
-.profile__section {
+.profile {
+  position: relative;
   display: flex;
   flex-direction: column;
   margin: 0px 70px;
@@ -46,12 +47,19 @@
   margin-top: 16px;
 }
 
+.profile__buttons {
+  display: flex;
+  flex-direction: column;
+
+}
+
 .profile__button {
   margin: 220px 0px 0px;
   text-align: center;
   align-self: center;
   cursor: pointer;
-  width: 410px;
+  max-width: 410px;
+  width: 100%;
   color: #FFF;
   text-align: center;
   font-size: 13px;
@@ -76,11 +84,18 @@
 @media screen and (max-width: 450px) {
   .profile {
     margin: 0px 30px;
+    
   }
   .profile__greeting {
     margin: 88px 0px 80px;
   }
   .profile__button:first-of-type {
-    margin: 379px 0px 0px;
+    margin: 0px;
+  }
+  .profile__buttons {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: 60px;
   }
 }

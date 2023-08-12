@@ -43,13 +43,13 @@ function Login({ handleSubmit }) {
         <button className="login__submit" type="submit" value="Login">
           Войти
         </button>
-      </form>
-      <div className="login__container">
+        <div className="login__container">
         <p className="login__text">Ещё не зарегистрированы?</p>
         <Link to="/signup" className="login__link">
           Регистрация
         </Link>
       </div>
+      </form>
     </main>
   );
 }

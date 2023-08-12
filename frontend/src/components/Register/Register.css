@@ -5,6 +5,7 @@
   max-width: 396px;
   width: 100%;
   align-self: center;
+  position: relative;
 }
 
 .register__greeting {
@@ -89,6 +90,8 @@
   }
   .register__form {
     margin: 0px 30px;
+    position: relative;
+    height: 100vh;
   }
   .register__submit {
     font-size: 12px;

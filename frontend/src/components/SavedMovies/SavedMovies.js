@@ -47,7 +47,7 @@ function SavedMovies({
         ""
       )}
       {/* <Preloader /> */}
-      <MoviesCardList movies={movies} />
+      <MoviesCardList movies={movies} isSaved={true} />
       <div className="movies-button__container">
         <button
           className="movies__button movies__button_hidden"

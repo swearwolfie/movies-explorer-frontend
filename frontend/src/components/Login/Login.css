@@ -5,6 +5,7 @@
   max-width: 396px;
   width: 100%;
   align-self: center;
+  position: relative;
 }
 
 .login__greeting {
@@ -120,6 +121,8 @@
   }
   .login__form {
     margin: 0px 30px;
+    position: relative;
+    height: 100vh;
   }
   .login {
     margin: 38px 0px 0px;
@@ -127,12 +130,19 @@
   }
   .login__submit {
     font-size: 12px;
-    margin-top: 267px;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+    bottom: 70px;
   }
   .login__link {
     font-size: 12px;
   }
   .login__text {
     font-size: 12px;
+  }
+  .login__container {
+    position: absolute;
+    bottom: 40px;
   }
 }
