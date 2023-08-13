@@ -122,7 +122,7 @@
   .login__form {
     margin: 0px 30px;
     position: relative;
-    height: 100vh;
+    height: calc(100vh - 253px);
   }
   .login {
     margin: 38px 0px 0px;

@@ -85,23 +85,27 @@
     align-self: center;
     margin: 50px 0px 80px;
   }
-  .register {
-    margin: 38px 0px 0px;
-  }
   .register__form {
     margin: 0px 30px;
     position: relative;
-    height: 100vh;
-  }
-  .register__submit {
-    font-size: 12px;
-    margin-top: 157px;
+    height: calc(100vh - 253px);
   }
   .register__text {
     font-size: 12px;
   }
   .register__link {
     font-size: 12px;
+  }
+  .register__submit {
+    font-size: 12px;
+    margin: 0px;
+    bottom: 70px;
+    position: absolute;
+    width: 100%;
+  }
+  .register__container {
+    position: absolute;
+    bottom: 40px;
   }
 }
 

@@ -84,7 +84,7 @@
 @media screen and (max-width: 450px) {
   .profile {
     margin: 0px 30px;
-    
+    height: calc(100vh - 56px);
   }
   .profile__greeting {
     margin: 88px 0px 80px;
@@ -96,6 +96,6 @@
     position: absolute;
     left: 50%;
     transform: translate(-50%, -50%);
-    bottom: 60px;
+    bottom: 40px;
   }
 }
