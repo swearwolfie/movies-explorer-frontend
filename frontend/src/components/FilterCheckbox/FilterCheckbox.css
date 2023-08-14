@@ -1,0 +1,95 @@
+.filter {
+  display: flex;
+  flex-direction: row;
+  margin: 33px 0px 47px;
+}
+
+.filter__title {
+  margin: 0px 0px 0px 14px;
+  padding: 0px;
+  color: #FFF;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px;
+}
+
+/* The switch - the box around the slider */
+.filter__switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+}
+
+/* Hide default HTML checkbox */
+.filter__switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.filter__slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(170, 170, 170, 0.3);
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.filter__slider:before {
+  position: absolute;
+  content: "";
+  height: 15px;
+  width: 15px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #FFF;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+.filter__input:checked + .filter__slider {
+  background-color: #3DDC84;
+}
+
+.filter__input:focus + .filter__slider {
+  box-shadow: 0 0 1px rgba(170, 170, 170, 0.3);
+}
+
+.filter__input:checked + .filter__slider:before {
+  -webkit-transform: translateX(15px);
+  -ms-transform: translateX(15px);
+  transform: translateX(15px);
+}
+
+@media screen and (max-width: 768px) {
+  .filter {
+    justify-content: end;
+    margin: 30px 0px 61px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .filter {
+    justify-content: center;
+    margin: 40px 0px 50px;
+  }
+  .filter__switch {
+    order: 2;
+  }
+  .filter__title {
+    margin: 0px 14px 0px 0px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+
+}

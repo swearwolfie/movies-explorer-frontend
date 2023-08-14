@@ -1,0 +1,98 @@
+.hamburger {
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  /* opacity: 0; */
+  transition: 0.3s;
+  /* visibility: hidden; */
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.hamburger__container {
+  background-color: #202020;
+  height: 100vh;
+  width: 520px;
+  align-self: flex-end;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.hamburger__list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 159px 0px 430px;
+  padding: 0px;
+}
+
+.hamburger__list-item {
+  margin: 0px 0px 28px;
+}
+
+.hamburger__link {
+  margin: 0px;
+  padding: 0px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #FFF;
+  text-align: center;
+  font-feature-settings: 'clig' off, 'liga' off;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  transition: opacity 0.3s;
+}
+
+.hamburger__link:hover {
+  opacity: 0.7;
+}
+
+.hamburger__link_active {
+  text-decoration: underline;
+}
+
+.hamburger__close-icon {
+  background-image: url(../../images/cross.svg);
+  width: 22px;
+  height: 22px;
+  align-self: flex-end;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  box-sizing: border-box;
+  background-size: contain;
+  border: 1px solid transparent;
+  position: absolute;
+  right: 22px;
+  top: 22px;
+}
+
+.hamburger__close-icon:hover {
+  opacity: 0.6;
+}
+
+@media screen and (max-width: 550px) {
+  .hamburger__container {
+    width: 100vw;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .hamburger__close-icon {
+    right: 13px;
+    top: 13px;
+  }
+  .hamburger__list {
+    margin: 159px 0px 300px;
+  }
+}
