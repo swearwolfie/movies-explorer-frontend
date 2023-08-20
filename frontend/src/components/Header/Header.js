@@ -4,7 +4,7 @@ import "./Header.css";
 import Logo from "../Logo/Logo";
 import Navigation from "../Navigation/Navigation";
 
-function Header({ onBurger }) {
+function Header({ onBurger, isLoggedIn }) {
   return (
     <header className="header">
       <Routes>
@@ -12,15 +12,17 @@ function Header({ onBurger }) {
           path="/"
           element={
             <>
-              <Logo />
-              <div className="header__container">
-                <Link to="/signup" className="header__link">
-                  Регистрация
-                </Link>
-                <Link to="/signin" className="header__signin">
-                  Войти
-                </Link>
-              </div>
+              <Logo /> 
+              {isLoggedIn ? 
+               <Navigation onNavBurger={onBurger} /> :   
+                <div className="header__container">
+               <Link to="/signup" className="header__link">
+                 Регистрация
+               </Link>
+               <Link to="/signin" className="header__signin">
+                 Войти
+               </Link>
+             </div>}
             </>
           }
         />

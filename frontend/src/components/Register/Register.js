@@ -3,36 +3,35 @@ import "./Register.css";
 import Logo from "../Logo/Logo";
 import Inputs from "../Inputs/Inputs";
 import { Link } from "react-router-dom";
-// import { useState } from 'react';
+import { useState } from 'react';
 
-function Register({ handleSubmit }) {
-  //  { onSignIn }
-  // const [userEmail, setUserEmail] = useState("");
-  // const [userPassword, setUserPassword] = useState("");
-  // const [userName, setUserName] = useState("");
+function Register({ onSignUp }) {
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+  const [userName, setUserName] = useState("");
 
-  // function handleEmailInfo(e) {
-  //   setUserEmail(e.target.value);
-  // }
+  function handleEmailInfo(e) {
+    setUserEmail(e.target.value);
+  }
 
-  // function handlePasswordInfo(e) {
-  //   setUserPassword(e.target.value);
-  // }
+  function handlePasswordInfo(e) {
+    setUserPassword(e.target.value);
+  }
 
-  // function handleNameInfo(e) {
-  //   setUserName(e.target.value);
-  // }
+  function handleNameInfo(e) {
+    setUserName(e.target.value);
+  }
 
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-
-  //   // Передаём значения управляемых компонентов во внешний обработчик
-  //   onSignIn({
-  //     email: userEmail,
-  //     password: userPassword,
-  //     name: userName,
-  //   });
-  // }
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log('handlesubmit', userEmail)
+    // Передаём значения управляемых компонентов во внешний обработчик
+    onSignUp({
+      email: userEmail,
+      password: userPassword,
+      name: userName,
+    });
+  }
 
   return (
     <main className="register">
@@ -49,14 +48,14 @@ function Register({ handleSubmit }) {
           id="register-name-input"
           name="register-name"
           placeholder="Виталий"
-          // onChange={handleNameInfo}
+          onChange={handleNameInfo}
           type="text"
           minLength="6"
           maxLength="200"
-          // value={userPassword}
+          value={userName}
           required
         />
-        <Inputs />
+        <Inputs handleEmailInfo={handleEmailInfo} handlePasswordInfo={handlePasswordInfo} userEmail={userEmail} userPassword={userPassword} />
         <button className="register__submit" type="submit" value="register">
           Зарегистрироваться
         </button>

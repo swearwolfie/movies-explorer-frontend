@@ -1,7 +1,7 @@
 import React from 'react';
 import './Inputs.css';
 
-function Inputs() {
+function Inputs({ handleEmailInfo, userEmail, handlePasswordInfo, userPassword }) {
   return (
     <>
       <h3 className="inputs__minititle">Email</h3>
@@ -10,11 +10,11 @@ function Inputs() {
         id='inputs-email-input'
         name="inputs-email"
         placeholder="pochta@yandex.ru"
-        // onChange={handleEmailInfo}
+        onChange={handleEmailInfo}
         type="email"
         minLength="2"
         maxLength="200"
-        // value={userEmail}
+        value={userEmail || ''}
         required
       />
       <h3 className="inputs__minititle">Пароль</h3>
@@ -23,11 +23,11 @@ function Inputs() {
         id="inputs-password-input"
         name="inputs-password"
         placeholder="Пароль"
-        // onChange={handlePasswordInfo}
+        onChange={handlePasswordInfo}
         type="password"
         minLength="6"
         maxLength="200"
-        // value={userPassword}
+        value={userPassword || ''}
         required
       />
       <span className="inputs__input-error">Что-то пошло не так...</span>

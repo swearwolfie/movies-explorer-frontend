@@ -7,7 +7,7 @@ function Portfolio() {
       <h2 className="portfolio__title">Портфолио</h2>
         <a
           href="https://github.com/swearwolfie"
-          class="portfolio__link"
+          className="portfolio__link"
           target="_blank"
           rel="noreferrer"
         > 
@@ -16,7 +16,7 @@ function Portfolio() {
         </a>
         <a
           href="https://github.com/swearwolfie"
-          class="portfolio__link"
+          className="portfolio__link"
           target="_blank"
           rel="noreferrer"
         >
@@ -25,7 +25,7 @@ function Portfolio() {
         </a>
         <a
           href="https://github.com/swearwolfie"
-          class="portfolio__link"
+          className="portfolio__link"
           target="_blank"
           rel="noreferrer"
         >
