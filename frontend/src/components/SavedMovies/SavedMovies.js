@@ -5,6 +5,7 @@ import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Hamburger from "../Hamburger/Hamburger";
 import MoviePic from "../../images/pic__COLOR_pic.svg";
 import MoviePic2 from "../../images//pic__COLOR_pic2.svg";
+import Navigation from "../Navigation/Navigation";
 // import Preloader from '../Preloader/Preloader';
 
 const movies = [
@@ -33,9 +34,11 @@ function SavedMovies({
   BurgerOpen,
   CloseBurgerMenu,
   SavedMoviesActive,
+  onBurger
 }) {
   return (
     <main className="saved-movies">
+      <Navigation onNavBurger={onBurger} />
       <SearchForm />
       {BurgerOpen ? (
         <Hamburger

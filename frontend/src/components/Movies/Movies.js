@@ -4,8 +4,9 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Hamburger from "../Hamburger/Hamburger";
 import Preloader from '../Preloader/Preloader';
+import Navigation from "../Navigation/Navigation";
 
-function Movies({ moviesList, onMore, BurgerOpen, CloseBurgerMenu, MoviesActive }) {
+function Movies({ moviesList, onMore, BurgerOpen, CloseBurgerMenu, MoviesActive, onBurger }) {
   const [ searchInfo, setSearchInfo ] = useState('');
   const [ checkboxChecked, setCheckboxChecked ] = useState('');
 
@@ -16,6 +17,7 @@ function Movies({ moviesList, onMore, BurgerOpen, CloseBurgerMenu, MoviesActive 
 
   return (
     <main className="movies">
+       <Navigation onNavBurger={onBurger} />
       {}
       <SearchForm 
       onSearchMovie={handleOnSearchMovie}  

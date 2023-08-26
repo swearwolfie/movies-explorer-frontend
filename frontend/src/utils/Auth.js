@@ -11,7 +11,7 @@
   }
 
   export const createUser = (name, email, password) => {
-    return fetch(`${basicURL}/signup`, {
+    return fetch(`https://api.swearwolfie.movies.nomoreparties.sbs/signup`, {
       method: "POST",
       headers: {
         Accept: "application/json",
@@ -40,6 +40,7 @@
   }
 
   export const checkToken = (token) => {
+    // console.log(token, 'come away come away death')
     return fetch(`${basicURL}/users/me`, {
       method: "GET",
       headers: {

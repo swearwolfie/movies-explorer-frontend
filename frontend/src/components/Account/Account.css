@@ -2,6 +2,7 @@
   margin: 21px 0px 0px;
   display: flex;
   flex-direction: row;
+  position: relative;
   width: 100px;
   height: 32px;
   border-radius: 50px;
@@ -11,6 +12,7 @@
 
 .account_menu {
   align-self: center;
+  bottom: 90px;
 }
 
 .account__link {
@@ -45,3 +47,4 @@
     display: none;
   }
 }
+

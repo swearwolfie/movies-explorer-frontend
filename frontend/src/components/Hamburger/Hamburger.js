@@ -3,7 +3,7 @@ import "./Hamburger.css";
 import { Link } from "react-router-dom";
 import Account from "../Account/Account";
 
-function Hamburger({ onClose, MenuVersion, MoviesActive, SavedMoviesActive }) {
+function Hamburger({ onClose, MenuVersion, MoviesActive, SavedMoviesActive, MainActive }) {
   return (
     <section className="hamburger">
       <div className="hamburger__container">
@@ -15,7 +15,10 @@ function Hamburger({ onClose, MenuVersion, MoviesActive, SavedMoviesActive }) {
         ></button>
         <ul className="hamburger__list">
           <li className="hamburger__list-item">
-            <Link to="/" className="hamburger__link">
+            <Link to="/" 
+               className={`hamburger__link ${
+                MainActive ? "hamburger__link_active" : ""
+              }`}>
               Главная
             </Link>
           </li>

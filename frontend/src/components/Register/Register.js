@@ -12,14 +12,17 @@ function Register({ onSignUp }) {
 
   function handleEmailInfo(e) {
     setUserEmail(e.target.value);
+    console.log('1', userEmail)
   }
 
   function handlePasswordInfo(e) {
     setUserPassword(e.target.value);
+    console.log('2', userPassword)
   }
 
   function handleNameInfo(e) {
     setUserName(e.target.value);
+    console.log('3', userName)
   }
 
   function handleSubmit(e) {

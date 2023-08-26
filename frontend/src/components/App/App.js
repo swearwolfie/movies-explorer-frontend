@@ -10,8 +10,9 @@ import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
 // import { CurrentUserContext } from "../../contexts/CurrentUserContext";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Login from "../Login/Login";
+import Navigation from "../Navigation/Navigation";
 import NotFound from "../NotFound/NotFound";
 import { createUser, authorize, checkToken } from "../../utils/Auth";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -21,54 +22,68 @@ function App() {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const [uploadedMovies, setUploadedMovies] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const navigate = useNavigate();
 
-  // получаем все фильмы
   useEffect(() => {
-    getMoviesApi
-      .getAllMovies() // result - готовые данные
-      .then((movies) => {
-        setUploadedMovies(movies);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  // получаем информацию юзера от сервера
-  useEffect(() => {
-    mainApi
-      .getCurrentUser()
-      .then((profileUserInfo) => {
-        setCurrentUser(profileUserInfo);
-        console.log('here i am waiting for a sign', profileUserInfo)
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
+    const jwt = localStorage.getItem("jwt");
+    if (jwt) {
+      checkToken(jwt)
+        .then((data) => {
+          if (data) {
+            setIsLoggedIn(true);
+            console.log('yes maureen', isLoggedIn, data)
+            // setProfileEmail(data.data.email);
+            // получаем юзера
+            mainApi
+              .getCurrentUser()
+              .then((profileUserInfo) => {
+                setCurrentUser(profileUserInfo.data);
+                console.log("walk with giants");
+              })
+              .catch((error) => {
+                console.log(error);
+              });
+          }
+          // получаем все фильмы
+          getMoviesApi
+            .getAllMovies()
+            .then((movies) => {
+              setUploadedMovies(movies);
+              console.log("movies success", movies);
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [isLoggedIn, navigate]);
 
   function handleSignUp({ name, email, password }) {
+    console.log('111', name, email, password)
     createUser(name, email, password)
-    .then(() => {
-      console.log('успех регистрации', name, email, password)
-      navigate("/movies");
-    })
-    .catch((error) => {
-      console.log(error);
-    })
+      .then(() => {
+        navigate("/");
+        console.log("успех регистрации", name, email, password);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   function handleSignIn({ email, password }) {
     authorize(email, password)
       .then((data) => {
         if (data) {
-          console.log(data, email, "успех апи");
           // setProfileEmail(email);
-          localStorage.setItem("jwt", data.token);
-          // setIsLoggedIn(true);
-          navigate("/");
+          localStorage.setItem("jwt", data.jwt);
+          setIsLoggedIn(true);
+          navigate("/movies");
+          console.log(data.jwt, email, "успех входа");
         }
       })
       .catch((error) => {
@@ -88,73 +103,107 @@ function App() {
     mainApi
       .changeUser(name, email)
       .then((updateInfo) => {
-        setCurrentUser(updateInfo);
+        setCurrentUser(updateInfo.data);
+        console.log(updateInfo, 'hey you')
       })
       .catch((error) => {
         console.log(error);
       });
   }
 
+  // // проверка токена
+
+  // useEffect(() => {
+  //   const token = localStorage.getItem("jwt");
+  //   if (token) {
+  //     checkToken(token)
+  //       .then((data) => {
+  //         if (data) {
+  //           setIsLoggedIn(true);
+  //           console.log('yes maureen', isLoggedIn)
+  //           // setProfileEmail(data.data.email);
+  //         }
+  //       })
+  //       .catch((error) => {
+  //         console.log(error);
+  //       });
+  //   }
+  // }, [isLoggedIn]);
+
+  function handleSignOut() {
+    setIsLoggedIn(false);
+    localStorage.removeItem("jwt");
+    console.log('no maureen', isLoggedIn)
+    navigate("/signin");
+  }
+
   return (
     <>
       <CurrentUserContext.Provider value={currentUser}>
-      <Header onBurger={handleBurgerOpen} />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Main />
-              <Footer />
-            </>
-          }
-        />
-        <Route
-          path="/movies"
-          element={
-            <>
-              <Movies
-                moviesList={uploadedMovies}
-                BurgerOpen={isBurgerMenuOpen}
-                CloseBurgerMenu={handleCloseBurgerMenu}
-                MoviesActive={isBurgerMenuOpen}
-              />
-              <Footer />
-            </>
-          }
-        />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                {isLoggedIn ? <Navigation onNavBurger={handleBurgerOpen}/> : <Header />}
+                <Main BurgerOpen={isBurgerMenuOpen} MainActive={isBurgerMenuOpen} CloseBurgerMenu={handleCloseBurgerMenu} />
+                <Footer />
+              </>
+            }
+          />
+          <Route
+            path="/movies"
+            element={
+              <>
+                <Movies
+                  moviesList={uploadedMovies}
+                  BurgerOpen={isBurgerMenuOpen}
+                  CloseBurgerMenu={handleCloseBurgerMenu}
+                  MoviesActive={isBurgerMenuOpen}
+                  onBurger={handleBurgerOpen}
+                />
+                <Footer />
+              </>
+            }
+          />
 
-        <Route
-          path="/saved-movies"
-          element={
-            <>
-              <SavedMovies
-                BurgerOpen={isBurgerMenuOpen}
-                CloseBurgerMenu={handleCloseBurgerMenu}
-                SavedMoviesActive={isBurgerMenuOpen}
-              />
-              <Footer />
-            </>
-          }
-        />
+          <Route
+            path="/saved-movies"
+            element={
+              <>
+                <SavedMovies
+                  BurgerOpen={isBurgerMenuOpen}
+                  CloseBurgerMenu={handleCloseBurgerMenu}
+                  SavedMoviesActive={isBurgerMenuOpen}
+                  onBurger={handleBurgerOpen}
+                />
+                <Footer />
+              </>
+            }
+          />
 
-        <Route
-          path="/profile"
-          element={
-            <>
-              <Profile
-                BurgerOpen={isBurgerMenuOpen}
-                CloseBurgerMenu={handleCloseBurgerMenu}
-                onUpdateUser={handleUpdateUser}
-              />
-            </>
-          }
-        />
-        <Route path="/signin" element={<Login onSignIn={handleSignIn} />} />
-        <Route path="/signup" element={<Register onSignUp={handleSignUp} />} />
+          <Route
+            path="/profile"
+            element={
+              <>
+                <Profile
+                  BurgerOpen={isBurgerMenuOpen}
+                  CloseBurgerMenu={handleCloseBurgerMenu}
+                  onUpdateUser={handleUpdateUser}
+                  onExit={handleSignOut}
+                  onBurger={handleBurgerOpen}
+                />
+              </>
+            }
+          />
+          <Route path="/signin" element={<Login onSignIn={handleSignIn} />} />
+          <Route
+            path="/signup"
+            element={<Register onSignUp={handleSignUp} />}
+          />
 
-        <Route path="/*" element={<NotFound />} />
-      </Routes>
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
       </CurrentUserContext.Provider>
     </>
   );

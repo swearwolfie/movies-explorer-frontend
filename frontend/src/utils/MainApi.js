@@ -2,7 +2,7 @@
 
 class Api {
   constructor({ url, headers }) {
-    this._url = url; // https://mesto.nomoreparties.co/v1/cohort-54/
+    this._url = url; // https://api.swearwolfie.movies.nomoreparties.sbs/
     this._headers = headers;
   }
 
@@ -43,22 +43,30 @@ class Api {
   //   }).then(this.checkResponse);
   // }
 
-  getCurrentUser() {
+  getCurrentUser()  {
+    const token = localStorage.getItem("jwt");
     return fetch(`${this._url}${"users/me"}`, {
-      headers: this._headers,
+      headers: {
+    "Content-type": "application/json",
+    authorization: `Bearer ${token}`
+  },
     }).then(this.checkResponse);
   }
 
-  // editProfile(name, about) {
-  //   return fetch(`${this._url}${"users/me"}`, {
-  //     method: "PATCH",
-  //     headers: this._headers,
-  //     body: JSON.stringify({
-  //       name,
-  //       about,
-  //     }),
-  //   }).then(this.checkResponse);
-  // }
+  changeUser(name, email) {
+    const token = localStorage.getItem("jwt");
+    return fetch(`${this._url}${"users/me"}`, {
+      method: "PATCH",
+      headers: {
+        "Content-type": "application/json",
+        authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        name,
+        email,
+      }),
+    }).then(this.checkResponse);
+  }
 
   // changeLikeCardStatus(id, isLiked) {
   //   return fetch(`${this._url}${"cards/"}${id}${"/likes"}`, {
@@ -74,10 +82,7 @@ class Api {
 // ↓  конфиг API
 
 const apiConfig = {
-  url: "https://api.nomoreparties.co/beatfilm-movies",
-  headers: {
-    "Content-type": "application/json",
-  },
+  url: "https://api.swearwolfie.movies.nomoreparties.sbs/",
 };
 
 const mainApi = new Api(apiConfig);
