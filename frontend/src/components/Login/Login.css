@@ -79,6 +79,11 @@
   opacity: 0.6;
 }
 
+.login__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .login__container {
   display: flex;
   flex-direction: row;

@@ -38,6 +38,12 @@
   line-height: normal;
   transition: opacity 0.3s;
 }
+
+.register__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .register__submit:hover {
   opacity: 0.6;
 }

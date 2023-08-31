@@ -17,7 +17,12 @@ function MoviesCard({ movie, isSaved }) {
 
   return (
     <li className="movies__list-item">
+      <a  href={movie.trailerLink}
+          className="movies__link"
+          target="_blank"
+          rel="noreferrer">
       <img className="movie__poster" src={`https://api.nomoreparties.co${movie.image.url}`} alt={movie.title} />
+          </a>
       <div className="movie__container">
         <h3 className="movie__title">{movie.nameRU} </h3>
         <div className={`movie__reaction ${isSaved ? "movie__reaction_delete" : "movie__reaction_like"}`}></div>

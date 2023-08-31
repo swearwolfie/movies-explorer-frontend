@@ -1,0 +1,10 @@
+.movies-error__button {
+  width: 120px;
+  height: 120px;
+  align-self: center;
+  margin: 60px 155px 32px;
+}
+
+.movies-error__button_cross {
+  background-image: url(../../images/crossinfo.svg);
+}

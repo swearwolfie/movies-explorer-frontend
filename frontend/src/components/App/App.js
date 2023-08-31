@@ -17,61 +17,61 @@ import NotFound from "../NotFound/NotFound";
 import { createUser, authorize, checkToken } from "../../utils/Auth";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import mainApi from "../../utils/MainApi";
+import ProtectedRoute from "../ProtectedRoute";
+import { useLocation } from "react-router-dom";
+import InfoTooltip from '../InfoTooltip/InfoTooltip'
 
 function App() {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const [uploadedMovies, setUploadedMovies] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isInfoToolOpen, setIsInfoToolOpen] = useState(false);
+  const [moviesServerError, setMoviesServerError] = useState(false);
+  const [popupMessageStatus, setPopupMessageStatus] = useState({
+    message: "",
+  });
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
-    const jwt = localStorage.getItem("jwt");
-    if (jwt) {
-      checkToken(jwt)
-        .then((data) => {
-          if (data) {
-            setIsLoggedIn(true);
-            console.log('yes maureen', isLoggedIn, data)
-            // setProfileEmail(data.data.email);
-            // получаем юзера
-            mainApi
-              .getCurrentUser()
-              .then((profileUserInfo) => {
-                setCurrentUser(profileUserInfo.data);
-                console.log("walk with giants");
-              })
-              .catch((error) => {
-                console.log(error);
-              });
-          }
-          // получаем все фильмы
-          getMoviesApi
-            .getAllMovies()
-            .then((movies) => {
-              setUploadedMovies(movies);
-              console.log("movies success", movies);
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  }, [isLoggedIn, navigate]);
-
-  function handleSignUp({ name, email, password }) {
-    console.log('111', name, email, password)
-    createUser(name, email, password)
-      .then(() => {
-        navigate("/");
-        console.log("успех регистрации", name, email, password);
+    if (isLoggedIn) {
+      Promise.all([
+        mainApi.getCurrentUser(),
+        getMoviesApi.getAllMovies()
+      ])
+      .then(([profileUserInfo, movies]) => {
+        setCurrentUser(profileUserInfo.data);
+        setUploadedMovies(movies);
+        console.log("walk with giants", profileUserInfo, movies);
       })
       .catch((error) => {
         console.log(error);
+        setMoviesServerError(true);
+      })
+    }
+  }, [isLoggedIn])
+
+  function handleSignUp({ name, email, password }) { 
+    createUser(name, email, password)
+      .then(() => {
+        console.log("успех регистрации", name, email, password);
+        handleSignIn({ email, password });
+      })
+      .catch((error) => {
+        if (error.includes(409)) {
+          setPopupMessageStatus({
+            text: "Такой пользователь уже существует",
+          });
+          setIsInfoToolOpen(true);
+        } else {
+          setPopupMessageStatus({
+            text: "Что-то пошло не так. Попробуйте еще раз",
+          });
+          console.log(error);
+          setIsInfoToolOpen(true);
+        }
       });
   }
 
@@ -79,15 +79,18 @@ function App() {
     authorize(email, password)
       .then((data) => {
         if (data) {
-          // setProfileEmail(email);
           localStorage.setItem("jwt", data.jwt);
           setIsLoggedIn(true);
+          console.log(data.jwt, email, isLoggedIn, "успех входа");
           navigate("/movies");
-          console.log(data.jwt, email, "успех входа");
         }
       })
       .catch((error) => {
+        setPopupMessageStatus({
+          text: "Что-то пошло не так. Попробуйте еще раз",
+        });
         console.log(error);
+        setIsInfoToolOpen(true);
       });
   }
 
@@ -99,6 +102,12 @@ function App() {
     setIsBurgerMenuOpen(false);
   }
 
+  function closeAllPopups() {
+    // setIsAddPlacePopupOpen(false);
+    // setIsImagePopupOpen(false);
+    setIsInfoToolOpen(false);
+  }
+
   function handleUpdateUser({ name, email }) {
     mainApi
       .changeUser(name, email)
@@ -107,34 +116,40 @@ function App() {
         console.log(updateInfo, 'hey you')
       })
       .catch((error) => {
+        setPopupMessageStatus({
+          text: "Что-то пошло не так. Попробуйте еще раз",
+        });
         console.log(error);
+        setIsInfoToolOpen(true);
       });
   }
-
-  // // проверка токена
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem("jwt");
-  //   if (token) {
-  //     checkToken(token)
-  //       .then((data) => {
-  //         if (data) {
-  //           setIsLoggedIn(true);
-  //           console.log('yes maureen', isLoggedIn)
-  //           // setProfileEmail(data.data.email);
-  //         }
-  //       })
-  //       .catch((error) => {
-  //         console.log(error);
-  //       });
-  //   }
-  // }, [isLoggedIn]);
+  
+  // проверка токена
+  useEffect(() => {
+    const token = localStorage.getItem("jwt");
+    const thisPage = location.pathname;
+    if (token) {
+      checkToken(token)
+        .then((data) => {
+          if (data) {
+            setIsLoggedIn(true);
+            console.log('hey token check', isLoggedIn, data)
+            setCurrentUser(data.data);
+          }
+          navigate(thisPage);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [isLoggedIn]);
 
   function handleSignOut() {
     setIsLoggedIn(false);
     localStorage.removeItem("jwt");
+    localStorage.clear();
     console.log('no maureen', isLoggedIn)
-    navigate("/signin");
+    navigate("/");
   }
 
   return (
@@ -145,57 +160,82 @@ function App() {
             path="/"
             element={
               <>
-                {isLoggedIn ? <Navigation onNavBurger={handleBurgerOpen}/> : <Header />}
-                <Main BurgerOpen={isBurgerMenuOpen} MainActive={isBurgerMenuOpen} CloseBurgerMenu={handleCloseBurgerMenu} />
+                {isLoggedIn ? (
+                  <Navigation onNavBurger={handleBurgerOpen} />
+                ) : (
+                  <Header />
+                )}
+                <Main
+                  BurgerOpen={isBurgerMenuOpen}
+                  MainActive={isBurgerMenuOpen}
+                  CloseBurgerMenu={handleCloseBurgerMenu}
+                />
                 <Footer />
               </>
             }
           />
           <Route
             path="/movies"
-            element={
-              <>
-                <Movies
-                  moviesList={uploadedMovies}
-                  BurgerOpen={isBurgerMenuOpen}
-                  CloseBurgerMenu={handleCloseBurgerMenu}
-                  MoviesActive={isBurgerMenuOpen}
-                  onBurger={handleBurgerOpen}
-                />
-                <Footer />
-              </>
-            }
-          />
+            element={<ProtectedRoute isLoggedIn={isLoggedIn} />}
+          >
+            <Route
+              path="/movies"
+              element={
+                <>
+                  <Movies
+                    moviesList={uploadedMovies}
+                    BurgerOpen={isBurgerMenuOpen}
+                    CloseBurgerMenu={handleCloseBurgerMenu}
+                    MoviesActive={isBurgerMenuOpen}
+                    onBurger={handleBurgerOpen}
+                    moviesServerError={moviesServerError}
+                  />
+                  <Footer />
+                </>
+              }
+            ></Route>
+          </Route>
 
           <Route
             path="/saved-movies"
-            element={
-              <>
-                <SavedMovies
-                  BurgerOpen={isBurgerMenuOpen}
-                  CloseBurgerMenu={handleCloseBurgerMenu}
-                  SavedMoviesActive={isBurgerMenuOpen}
-                  onBurger={handleBurgerOpen}
-                />
-                <Footer />
-              </>
-            }
-          />
+            element={<ProtectedRoute isLoggedIn={isLoggedIn} />}
+          >
+            <Route
+              path="/saved-movies"
+              element={
+                <>
+                  <SavedMovies
+                    BurgerOpen={isBurgerMenuOpen}
+                    CloseBurgerMenu={handleCloseBurgerMenu}
+                    SavedMoviesActive={isBurgerMenuOpen}
+                    onBurger={handleBurgerOpen}
+                  />
+                  <Footer />
+                </>
+              }
+            ></Route>
+          </Route>
 
           <Route
             path="/profile"
-            element={
-              <>
-                <Profile
-                  BurgerOpen={isBurgerMenuOpen}
-                  CloseBurgerMenu={handleCloseBurgerMenu}
-                  onUpdateUser={handleUpdateUser}
-                  onExit={handleSignOut}
-                  onBurger={handleBurgerOpen}
-                />
-              </>
-            }
-          />
+            element={<ProtectedRoute isLoggedIn={isLoggedIn} />}
+          >
+            <Route
+              path="/profile"
+              element={
+                <>
+                  <Profile
+                    BurgerOpen={isBurgerMenuOpen}
+                    CloseBurgerMenu={handleCloseBurgerMenu}
+                    onUpdateUser={handleUpdateUser}
+                    onExit={handleSignOut}
+                    onBurger={handleBurgerOpen}
+                  />
+                </>
+              }
+            ></Route>
+          </Route>
+
           <Route path="/signin" element={<Login onSignIn={handleSignIn} />} />
           <Route
             path="/signup"
@@ -204,6 +244,11 @@ function App() {
 
           <Route path="/*" element={<NotFound />} />
         </Routes>
+        <InfoTooltip
+          isOpen={isInfoToolOpen}
+          onClose={closeAllPopups}
+          message={popupMessageStatus}
+        />
       </CurrentUserContext.Provider>
     </>
   );
