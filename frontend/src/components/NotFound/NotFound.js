@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./NotFound.css";
 import { useNavigate } from "react-router-dom";
 
 function NotFound() {
   const navigate = useNavigate();
 
-  const handleGoBack = () => {
-    navigate(-1);
-  };
+const handleGoBack = () => {
+  navigate(-1);
+};
+
 
   return (
     <main className="not-found">

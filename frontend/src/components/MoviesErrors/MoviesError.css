@@ -1,8 +1,27 @@
+.movies-error {
+  display: flex;
+  margin: 0px auto;
+}
+
 .movies-error__button {
   width: 120px;
   height: 120px;
   align-self: center;
   margin: 60px 155px 32px;
+}
+
+.movies-error__text {
+  max-width: 730px;
+  width: 100%;
+  margin: 0px;
+  padding: 0px;
+  font-size: 50px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: -2px;
+  color: #fff;
+  text-align: center;
 }
 
 .movies-error__button_cross {

@@ -39,6 +39,10 @@
   line-height: normal;
   margin: 14px 0px 0px;
   padding: 0px;
+  width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .movie__reaction {
@@ -74,9 +78,13 @@
   line-height: normal;
 }
 
-@media screen and (max-width: 990px) {
+@media screen and (max-width: 1100px) {
   .movie__poster {
     height: 120px;
+  }
+
+  .movie__title {
+    width: 100px;
   }
 } 
 
@@ -86,8 +94,17 @@
   }
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 600px) {
   .movie__poster {
-    height: 168px;
+    height: 130px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .movie__poster {
+    height: 230px;
+  }
+  .movie__title {
+    width: 250px;
   }
 }
