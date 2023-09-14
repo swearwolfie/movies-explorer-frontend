@@ -1,4 +1,6 @@
 // plan goes here
+export const BEATFILM_URL =
+  'https://api.nomoreparties.co/';
 
 class Api {
   constructor({ url, headers }) {
@@ -19,29 +21,50 @@ class Api {
     }
   }
 
-  // getCards() {
-  //   return fetch(`${this._url}${"cards"}`, {
-  //     headers: this._headers,
-  //   }).then(this.checkResponse);
-  // }
+  getMovies() {
+    const token = localStorage.getItem("jwt");
+    return fetch(`${this._url}${"movies"}`, {
+      headers: {
+        "Content-type": "application/json",
+        authorization: `Bearer ${token}`
+      },
+    }).then(this.checkResponse);
+  }
 
-  // deleteCard(id) {
-  //   return fetch(`${this._url}${"cards/"}${id}`, {
-  //     method: 'DELETE',
-  //     headers: this._headers,
-  //   }).then(this.checkResponse);
-  // }
+  deleteMovie(id) {
+    const token = localStorage.getItem("jwt");
+    return fetch(`${this._url}${"movies/"}${id}`, {
+      method: 'DELETE',
+      headers: {
+        "Content-type": "application/json",
+        authorization: `Bearer ${token}`
+      },
+    }).then(this.checkResponse);
+  }
 
-  // addNewCard(name, link) {
-  //   return fetch(`${this._url}${"cards"}`, {
-  //     method: "POST",
-  //     headers: this._headers,
-  //     body: JSON.stringify({
-  //       name,
-  //       link,
-  //     }),
-  //   }).then(this.checkResponse);
-  // }
+  createMovie(data) {
+    const token = localStorage.getItem("jwt");
+    return fetch(`${this._url}${"movies"}`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        country: data.country,
+        director: data.director,
+        duration: data.duration,
+        year: data.year,
+        description: data.description,
+        image: BEATFILM_URL + data.image.url,
+        trailer: data.trailerLink,
+        nameRU: data.nameRU,
+        nameEN: data.nameEN,
+        thumbnail: BEATFILM_URL + data.image.formats.thumbnail.url,
+        movieId: data.id,
+      }),
+    }).then(this.checkResponse);
+  }
 
   getCurrentUser()  {
     const token = localStorage.getItem("jwt");

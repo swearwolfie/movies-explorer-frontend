@@ -14,6 +14,8 @@ function Movies({
   MoviesActive,
   onBurger,
   moviesServerError,
+  onMovieLike, 
+  savedMovies
 }) {
   const [searchInfo, setSearchInfo] = useState("");
   const [checkboxChecked, setCheckboxChecked] = useState(false);
@@ -158,7 +160,7 @@ function Movies({
         <MoviesErrors serverError={moviesServerError} />
       ) : searchActive ? (
         <>
-          <MoviesCardList movies={renderMovies} isSaved={false} />
+          <MoviesCardList movies={renderMovies} onMovieLike={onMovieLike} savedMovies={savedMovies} savedSetting={false} />
           <div className="movies-button__container">
             <button className={`movies__button ${foundMovies.length === renderMovies.length  ? 'movies__button_hidden' : ''}`} onClick={handleOnMore}>
               Еще

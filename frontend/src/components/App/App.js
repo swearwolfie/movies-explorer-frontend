@@ -24,6 +24,7 @@ import InfoTooltip from '../InfoTooltip/InfoTooltip'
 function App() {
   const [isBurgerMenuOpen, setIsBurgerMenuOpen] = useState(false);
   const [uploadedMovies, setUploadedMovies] = useState([]);
+  const [savedMovies, setSavedMovies] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isInfoToolOpen, setIsInfoToolOpen] = useState(false);
@@ -39,12 +40,14 @@ function App() {
     if (isLoggedIn) {
       Promise.all([
         mainApi.getCurrentUser(),
-        getMoviesApi.getAllMovies()
+        getMoviesApi.getAllMovies(),
+        mainApi.getMovies()
       ])
-      .then(([profileUserInfo, movies]) => {
+      .then(([profileUserInfo, movies, savedMovies]) => {
         setCurrentUser(profileUserInfo.data);
         setUploadedMovies(movies);
-        console.log("walk with giants", profileUserInfo, movies);
+        setSavedMovies(savedMovies.data);
+        console.log("walk with giants", savedMovies.data);
       })
       .catch((error) => {
         console.log(error);
@@ -144,10 +147,43 @@ function App() {
     }
   }, [isLoggedIn]);
 
+  function handleSaveMovie(movie, isLiked, id) {
+    if (!isLiked) {
+      mainApi
+      .createMovie(movie)
+      .then((newSavedMovie) => {
+        setSavedMovies([...savedMovies, newSavedMovie.data])
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+    } else {
+      handleRemoveSavedMovie(id);
+    }
+  }
+
+  function handleRemoveSavedMovie(id) {
+    const latestFoundMoviesInSaved = JSON.parse(localStorage.getItem("latestFoundMoviesInSaved"));
+    mainApi.deleteMovie(id)
+    .then(() => {
+      const reSavedMovies = savedMovies.filter((movie) => id !== movie._id);
+      setSavedMovies(reSavedMovies);
+      localStorage.setItem('savedMovies', JSON.stringify(reSavedMovies));
+
+      if (latestFoundMoviesInSaved) {
+        const updatedLatestFoundMoviesInSaved = latestFoundMoviesInSaved.filter((movie) => id !== movie._id);
+        localStorage.setItem('latestFoundMoviesInSaved', JSON.stringify(updatedLatestFoundMoviesInSaved))
+      }
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+  }
+
   function handleSignOut() {
     setIsLoggedIn(false);
     localStorage.removeItem("jwt");
-    localStorage.clear();
+    // localStorage.clear();
     console.log('no maureen', isLoggedIn)
     navigate("/");
   }
@@ -189,6 +225,9 @@ function App() {
                     MoviesActive={isBurgerMenuOpen}
                     onBurger={handleBurgerOpen}
                     moviesServerError={moviesServerError}
+                    onMovieLike={handleSaveMovie}
+                    // onMovieDelete={handleRemoveSavedMovie}
+                    savedMovies={savedMovies}
                   />
                   <Footer />
                 </>
@@ -209,6 +248,8 @@ function App() {
                     CloseBurgerMenu={handleCloseBurgerMenu}
                     SavedMoviesActive={isBurgerMenuOpen}
                     onBurger={handleBurgerOpen}
+                    onMovieDelete={handleRemoveSavedMovie}
+                    savedMovies={savedMovies}
                   />
                   <Footer />
                 </>

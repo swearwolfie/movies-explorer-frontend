@@ -47,14 +47,14 @@
 
 .movie__reaction {
   margin: 14px 0px 0px;
+  background-color: #222222;
+  cursor: pointer;
 }
 
 .movie__reaction_like {
-  width: 11px;
-  height: 11px;
-  background-color: #222222;
+  /* width: 11px;
+  height: 11px; */
   border-radius: 50px;
-  cursor: pointer;
   border: 2px solid #ffffff;
 }
 
@@ -62,6 +62,7 @@
   background-image: url(../../images/d8.svg);
   width: 16px;
   height: 16px;
+  border: none;
 }
 
 .movie__reaction_like_active {
