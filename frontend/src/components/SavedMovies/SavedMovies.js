@@ -4,42 +4,45 @@ import SearchForm from "../SearchForm/SearchForm";
 import MoviesCardList from "../MoviesCardList/MoviesCardList";
 import Hamburger from "../Hamburger/Hamburger";
 import Navigation from "../Navigation/Navigation";
+import MoviesErrors from "../MoviesErrors/MoviesError";
 // import Preloader from '../Preloader/Preloader';
-
 
 function SavedMovies({
   onMore,
   BurgerOpen,
   CloseBurgerMenu,
   SavedMoviesActive,
-  onBurger, 
+  onBurger,
   savedMovies,
-  onMovieDelete
+  onMovieDelete,
+  moviesServerError,
 }) {
   const [searchInfo, setSearchInfo] = useState("");
   const [checkboxChecked, setCheckboxChecked] = useState(false);
-  // const [searchActive, setSearchActive] = useState(false);
+  const [searchActive, setSearchActive] = useState(false);
   const [foundMovies, setFoundMovies] = useState([]);
   const [moviesNotFound, setMoviesNotFound] = useState(false);
   // const [moreMovies, setMoreMovies] = useState(0);
   // const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const lastSearchInSaved = localStorage.getItem("lastSearchInSaved");
-  const latestFoundMoviesInSaved = localStorage.getItem("latestFoundMoviesInSaved");
+  const latestFoundMoviesInSaved = localStorage.getItem(
+    "latestFoundMoviesInSaved"
+  );
   const lastCheckStatInSaved = localStorage.getItem("lastCheckStatInSaved");
   // const TABLET_VIEW = 768;
   // const LAPTOP_VIEW = 950;
   // const MOBILE_VIEW = 500;
 
-    // руководим чекбоксом
-    function handleCheckboxChange() {
-      // если инпут не пустой, чекбокс активен и фильтрует
-      if (searchInfo !== "") {
-        setCheckboxChecked(!checkboxChecked);
-        handleOnSearchMovie(searchInfo, !checkboxChecked);
-      }
+  // руководим чекбоксом
+  function handleCheckboxChange() {
+    // если инпут не пустой, чекбокс активен и фильтрует
+    if (searchInfo !== "") {
+      setCheckboxChecked(!checkboxChecked);
+      handleOnSearchMovie(searchInfo, !checkboxChecked);
     }
-    
-      // основная функция по поиску фильмов
+  }
+
+  // основная функция по поиску фильмов
   function handleOnSearchMovie(searchValue, checkboxStat) {
     localStorage.setItem("lastSearchInSaved", searchValue);
     localStorage.setItem("lastCheckStatInSaved", checkboxStat);
@@ -82,7 +85,6 @@ function SavedMovies({
     }, 2000);
   }
 
-
   // // финальный рендеринг карточек под размер экрана и иисусьи слезы
   // const renderMovies = useMemo(() => {
   //   const cardsSet =
@@ -102,7 +104,7 @@ function SavedMovies({
   //   };
   // });
 
-      // запоминаем финтифлюшки для перезагрузки страницы
+  // запоминаем финтифлюшки для перезагрузки страницы
   useEffect(() => {
     if (lastSearchInSaved) {
       setSearchInfo(lastSearchInSaved);
@@ -114,7 +116,6 @@ function SavedMovies({
       setCheckboxChecked(JSON.parse(lastCheckStatInSaved));
     }
   }, [lastSearchInSaved, latestFoundMoviesInSaved, lastCheckStatInSaved]);
-
 
   return (
     <main className="saved-movies">
@@ -135,10 +136,9 @@ function SavedMovies({
       ) : (
         ""
       )}
-       <MoviesCardList movies={savedMovies} onMovieDelete={onMovieDelete} savedMovies={savedMovies} savedSetting={true} />
-      {/* {foundMovies.length 
-      ? <MoviesCardList movies={foundMovies} onMovieLike={onMovieLike} savedMovies={savedMovies} />
-      : moviesNotFound} */}
+      {/* {foundMovies.length !== 0
+      ? <MoviesCardList movies={foundMovies} onMovieDelete={onMovieDelete} savedMovies={savedMovies} savedSetting={true} />
+      : moviesNotFound}
       <div className="movies-button__container">
         <button
           className="movies__button movies__button_hidden"
@@ -146,7 +146,34 @@ function SavedMovies({
         >
           Еще
         </button>
-      </div>
+      </div> */}
+      {moviesNotFound || moviesServerError ? (
+        <MoviesErrors serverError={moviesServerError} />
+      ) : searchActive ? (
+        <>
+          <MoviesCardList
+            movies={foundMovies}
+            onMovieDelete={onMovieDelete}
+            savedMovies={savedMovies}
+            savedSetting={true}
+          />
+        </>
+      ) : (
+        <MoviesCardList
+          movies={savedMovies}
+          onMovieDelete={onMovieDelete}
+          savedMovies={savedMovies}
+          savedSetting={true}
+        />
+      )}
+      {/* <div className="movies-button__container">
+        <button
+          className="movies__button movies__button_hidden"
+          onClick={onMore}
+        >
+          Еще
+        </button>
+      </div> */}
     </main>
   );
 }

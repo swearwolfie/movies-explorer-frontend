@@ -250,6 +250,7 @@ function App() {
                     onBurger={handleBurgerOpen}
                     onMovieDelete={handleRemoveSavedMovie}
                     savedMovies={savedMovies}
+                    moviesServerError={moviesServerError}
                   />
                   <Footer />
                 </>

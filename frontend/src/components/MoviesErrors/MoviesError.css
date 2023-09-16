@@ -13,7 +13,7 @@
 .movies-error__text {
   max-width: 730px;
   width: 100%;
-  margin: 0px;
+  margin: 0px auto;
   padding: 0px;
   font-size: 50px;
   font-style: normal;
@@ -22,6 +22,12 @@
   letter-spacing: -2px;
   color: #fff;
   text-align: center;
+}
+
+.movies-error__text_s {
+  font-size: 25px;
+  line-height: 30px;
+  letter-spacing: 0px;
 }
 
 .movies-error__button_cross {
