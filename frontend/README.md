@@ -1,5 +1,7 @@
 Ссылка на проект в фигме https://www.figma.com/file/6SheHm2ZqFgF9wFiHFhQpF/Diploma-(Copy)?type=design&node-id=37156%3A81248&mode=dev
 
+Ссылки на сайт: https://swearwolfie.movies.nomoredomainsrocks.ru/
+                http://swearwolfie.movies.nomoredomainsrocks.ru/
 
 # Getting Started with Create React App
 
