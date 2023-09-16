@@ -3,6 +3,8 @@
 Ссылки на сайт: https://swearwolfie.movies.nomoredomainsrocks.ru/
                 http://swearwolfie.movies.nomoredomainsrocks.ru/
 
+Ссылка на пул: https://github.com/swearwolfie/movies-explorer-frontend/pull/2#issue-1860176569
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
