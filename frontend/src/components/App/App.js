@@ -9,7 +9,6 @@ import Register from "../Register/Register";
 import Movies from "../Movies/Movies";
 import SavedMovies from "../SavedMovies/SavedMovies";
 import Profile from "../Profile/Profile";
-// import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Login from "../Login/Login";
 import Navigation from "../Navigation/Navigation";
@@ -26,6 +25,7 @@ function App() {
   const [uploadedMovies, setUploadedMovies] = useState([]);
   const [savedMovies, setSavedMovies] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
+  const [infoToolSuccessful, setInfoToolSuccessful] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isInfoToolOpen, setIsInfoToolOpen] = useState(false);
   const [moviesServerError, setMoviesServerError] = useState(false);
@@ -106,25 +106,28 @@ function App() {
   }
 
   function closeAllPopups() {
-    // setIsAddPlacePopupOpen(false);
-    // setIsImagePopupOpen(false);
     setIsInfoToolOpen(false);
   }
 
-  function handleUpdateUser({ name, email }) {
+  function handleUpdateUser({name, email}) {
     mainApi
       .changeUser(name, email)
       .then((updateInfo) => {
+        setInfoToolSuccessful(true);
+        setPopupMessageStatus({
+          text: "Данные успешно изменены",
+        });
         setCurrentUser(updateInfo.data);
         console.log(updateInfo, 'hey you')
       })
       .catch((error) => {
+        setInfoToolSuccessful(false);
         setPopupMessageStatus({
           text: "Что-то пошло не так. Попробуйте еще раз",
         });
         console.log(error);
-        setIsInfoToolOpen(true);
-      });
+      })
+      .finally(() => setIsInfoToolOpen(true));
   }
   
   // проверка токена
@@ -183,7 +186,7 @@ function App() {
   function handleSignOut() {
     setIsLoggedIn(false);
     localStorage.removeItem("jwt");
-    // localStorage.clear();
+    localStorage.clear();
     console.log('no maureen', isLoggedIn)
     navigate("/");
   }
@@ -226,7 +229,6 @@ function App() {
                     onBurger={handleBurgerOpen}
                     moviesServerError={moviesServerError}
                     onMovieLike={handleSaveMovie}
-                    // onMovieDelete={handleRemoveSavedMovie}
                     savedMovies={savedMovies}
                   />
                   <Footer />
@@ -289,6 +291,7 @@ function App() {
         <InfoTooltip
           isOpen={isInfoToolOpen}
           onClose={closeAllPopups}
+          isSuccess={infoToolSuccessful}
           message={popupMessageStatus}
         />
       </CurrentUserContext.Provider>

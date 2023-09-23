@@ -58,7 +58,10 @@
 
 
 .info-tool__button_tick {
-  background-image: url(../../images/tick.svg);
+  background-image: url(../../images/Untitled.png);
+  width: 130px;
+  height: 130px;
+  background-size: contain;
 }
 
 .info-tool__button_cross {

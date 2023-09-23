@@ -4,14 +4,14 @@ import { Link } from "react-router-dom";
 
 function Account({ MenuVersion }) {
   return (
-    <div
+    <Link to="/profile"
       className={`account ${MenuVersion ? "account_menu" : "account_no-menu"}`}
     >
       <div className="account__icon"></div>
-      <Link to="/profile" className="account__link">
+      <h3 className="account__link">
         Аккаунт
-      </Link>
-    </div>
+      </h3>
+    </Link>
   );
 }
 

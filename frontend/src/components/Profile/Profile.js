@@ -30,13 +30,14 @@ function Profile({ onExit, BurgerOpen, CloseBurgerMenu, onUpdateUser, onBurger }
   function handleNameChange(e) {
     const value = e.target.value;
     setNickame(value);
-    setHasValueChanged(value !== '');
+    setHasValueChanged(value !== '' && value !== currentUser.name);
   }
 
   function handleEmailChange(e) {
     const value = e.target.value;
     setEmail(value);
-    setHasValueChanged(value !== '');
+    console.log(currentUser.email, 'hey');
+    setHasValueChanged(value !== '' && value !== currentUser.email);
   }
 
   function handleSubmit(e) {
@@ -47,6 +48,7 @@ function Profile({ onExit, BurgerOpen, CloseBurgerMenu, onUpdateUser, onBurger }
         name: nickname,
         email: email,
       });
+      setHasValueChanged(false);
   }
 
   return (
@@ -66,6 +68,7 @@ function Profile({ onExit, BurgerOpen, CloseBurgerMenu, onUpdateUser, onBurger }
             className={`profile__text profile__text_name profile__text_input ${validateName(nickname) ? '' : "profile__text_invalid"}`}
             placeholder="бла бла"
             value={nickname || ""}
+            id="nameInput"
             onChange={handleNameChange}
           />
         </div>

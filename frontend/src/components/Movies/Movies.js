@@ -6,6 +6,7 @@ import Hamburger from "../Hamburger/Hamburger";
 import Preloader from "../Preloader/Preloader";
 import Navigation from "../Navigation/Navigation";
 import MoviesErrors from "../MoviesErrors/MoviesError";
+import { TABLET_VIEW, LAPTOP_VIEW, MOBILE_VIEW } from "../../utils/constants";
 
 function Movies({
   moviesList,
@@ -27,10 +28,6 @@ function Movies({
   const lastSearch = localStorage.getItem("lastSearch");
   const latestFoundMovies = localStorage.getItem("latestFoundMovies");
   const lastCheckStat = localStorage.getItem("lastCheckStat");
-  const TABLET_VIEW = 768;
-  const DESKTOP_VIEW = 1280;
-  const LAPTOP_VIEW = 950;
-  const MOBILE_VIEW = 500;
 
   // руководим чекбоксом
   function handleCheckboxChange() {
@@ -41,7 +38,6 @@ function Movies({
     }
   }
   
-
   // основная функция по поиску фильмов
   function handleOnSearchMovie(searchValue, checkboxStat) {
     localStorage.setItem("lastSearch", searchValue);
@@ -109,10 +105,12 @@ function Movies({
 
   // кнопка 'еще'
   const handleOnMore = () => {
-    if (screenWidth < DESKTOP_VIEW) {
-      setMoreMovies((previous) => previous + 2);
-    } else if (screenWidth >= DESKTOP_VIEW) {
+    if (screenWidth >= LAPTOP_VIEW) {
+      setMoreMovies((previous) => previous + 4);
+    } else if (screenWidth > TABLET_VIEW) {
       setMoreMovies((previous) => previous + 3);
+    } else if (screenWidth < TABLET_VIEW) {
+      setMoreMovies((previous) => previous + 2);
     }
   };
 
