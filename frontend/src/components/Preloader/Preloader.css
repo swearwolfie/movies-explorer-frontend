@@ -41,12 +41,10 @@
 
 .preloader {
     display: flex;
-    align-items: center;
     justify-content: center;
     width: 100%;
-    height: 100%;
+    height: calc(100vh - 520px);
     z-index: 10;
-    padding: 20px;
 }
 
 .preloader__container {

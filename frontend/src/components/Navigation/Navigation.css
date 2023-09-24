@@ -1,3 +1,16 @@
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0px 70px;
+}
+
+@media screen and (max-width: 768px) {
+  .navigation {
+    margin: 0px 30px;
+  }
+}
+
 .navigation__container {
   display: flex;
   flex-direction: row;
@@ -85,12 +98,18 @@
 }
 
 @media screen and (max-width: 670px) {
+  .navigation {
+    margin: 0px 24px;
+  }
   .navigation__link {
     margin: 29px 14px 29px 0px;
   }
 }
 
 @media screen and (max-width: 500px) {
+  .navigation {
+    margin: 0px 14px;
+  }
   .navigation__link {
     font-size: 10px;
   }

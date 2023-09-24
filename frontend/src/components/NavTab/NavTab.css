@@ -12,14 +12,14 @@
 
 .navtab__list {
   list-style-type: none;
-  width: 96px;
+  /* width: 96px;
   height: 36px;
   background-color: #303030;
   border-radius: 10px;
   margin: 0px 10px 0px 0px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 
 .navtab__list:last-of-type {
@@ -37,6 +37,14 @@
   cursor: pointer;
   text-decoration: none;
   transition: opacity 0.3s;
+  width: 96px;
+  height: 36px;
+  background-color: #303030;
+  border-radius: 10px;
+  margin: 0px 10px 0px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .navtab__link:hover {
@@ -50,14 +58,12 @@
   .navtab__section {
     margin: 0px;
   }
-  .navtab__list {
+  
+  .navtab__link {
+    font-size: 10px;
     width: 82px;
     height: 26px;
     border-radius: 6px;
     margin-right: 6px;
-  }
-
-  .navtab__link {
-    font-size: 10px;
   }
 }
